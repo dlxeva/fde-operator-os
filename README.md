@@ -66,6 +66,28 @@ It also ships with eight operator artifacts:
 - POC Acceptance Contract
 - Expansion Roadmap
 
+### FAQ
+
+**If I am an FDE, can I just follow this repository step by step?**
+
+Yes, as a default structure. No, as a substitute for judgment.
+
+This repository is designed to reduce structural mistakes: jumping into solutioning too early, skipping ownership, missing fallback paths, or defining a pilot with no acceptance contract. If you follow the stages and artifacts, you will usually start in the right place and produce more decision-ready outputs.
+
+What it does **not** replace is the hard part of real FDE work:
+
+- reading the customer organization correctly
+- spotting shadow workflows and exception paths
+- modeling the domain accurately enough to matter
+- judging what is politically possible now versus later
+- deciding which problem is worth solving first
+
+Treat this repository as scaffolding for FDE judgment, not as autopilot.
+
+### Example Output
+
+See [`examples/synthetic-fire-inspection-ai/`](./examples/synthetic-fire-inspection-ai/) for a small synthetic case showing what a handful of artifacts look like in practice.
+
 ### Repository Layout
 
 ```text
@@ -73,6 +95,14 @@ fde-operator-os/
 ├── SKILL.md
 ├── README.md
 ├── LICENSE
+├── examples/
+│   └── synthetic-fire-inspection-ai/
+│       ├── input-notes.md
+│       ├── 01-mission-brief.md
+│       ├── 02-operational-reality-map.md
+│       ├── 03-system-problem-frame.md
+│       ├── 04-minimum-viable-loop.md
+│       └── 05-poc-acceptance-contract.md
 ├── agents/
 │   └── openai.yaml
 ├── references/
@@ -123,7 +153,7 @@ Then use prompts like:
 
 ### Validation
 
-This skill passes the standard skill validation flow with `quick_validate.py`.
+This skill is compatible with standard skill validation flows and has been validated during development with a standard `quick_validate.py` check.
 
 ### Status
 
@@ -191,6 +221,28 @@ MIT
 - POC Acceptance Contract
 - Expansion Roadmap
 
+### FAQ
+
+**如果我是一个 FDE 工程师，是不是照着这套做就行？**
+
+可以把它当默认骨架来照着跑，但不能把它当替你判断的自动驾驶。
+
+这套仓库最擅长帮你减少结构性错误，比如太早跳进方案、漏掉 owner、没有 fallback、pilot 没有验收口径。只要按阶段和 artifacts 推进，你通常会从更对的位置开始，也更容易产出可决策的交付物。
+
+但它不能替你完成真正困难的部分：
+
+- 看懂客户组织和权力结构
+- 挖出 shadow workflow 和例外路径
+- 把领域 ontology 建模到足够准确
+- 判断什么现在能推、什么需要延后
+- 决定到底先解决哪个问题最值
+
+更准确的说法是：这是一套给 FDE 判断搭脚手架的方法系统，不是自动驾驶。
+
+### 示例输出
+
+可以看 [`examples/synthetic-fire-inspection-ai/`](./examples/synthetic-fire-inspection-ai/)，里面放了一个小型 synthetic case，帮助理解这套方法最终会产出什么样的内容。
+
 ### 安装
 
 这个仓库可以有两种用法：
@@ -220,7 +272,7 @@ Copy-Item -Recurse .\fde-operator-os "$HOME\.codex\skills\"
 
 ### 验证
 
-该 skill 已通过标准 `quick_validate.py` 校验。
+该 skill 的结构兼容标准 skill 校验流程，并已在开发过程中通过标准 `quick_validate.py` 检查。
 
 ### 当前状态
 
