@@ -19,7 +19,7 @@
 - Choose one bottleneck to fix first.
 - Make non-goals explicit early to avoid political scope inflation.
 
-## Ontology & Action Model
+## State, Action & Evidence Model
 
 - If an object has no action or state consequence, it may not belong in the first ontology.
 - If an action changes the world, specify authority, evidence, and rollback.
@@ -42,3 +42,9 @@
 - Scale only after one loop is trusted, measured, and owned.
 - Expansion by adjacent loop is usually safer than expansion by bigger customer promise.
 - If each new site needs heroics, you do not have a program yet.
+
+## Asset Distillation
+
+- Promote only what another operator could reuse without your live explanation.
+- Distill ugly cases into eval assets before memory smooths them out.
+- If a lesson changes future delivery, template, or product work, give it an owner and a destination.

@@ -77,3 +77,15 @@ Symptoms:
 Correction:
 
 - define replication conditions and stop/go gates explicitly
+
+## Pattern 8: No Asset Return
+
+Symptoms:
+
+- delivery artifacts solve the current account but leave nothing reusable
+- lessons stay inside recap decks, chat logs, or one operator's memory
+- the next similar project starts from zero
+
+Correction:
+
+- require asset distillation at project close and promote reusable patterns, eval cases, governance checks, or tooling

@@ -1,15 +1,17 @@
 ---
 name: fde-operator-os
-description: High-level operating system for Applied AI delivery leads who need to qualify an AI opportunity, turn messy operational reality into a structured business system, design a minimum viable loop, and define a delivery-ready expansion path. Use when the user needs full-cycle FDE judgment, operator-grade artifacts, ontology and workflow framing, pilot design, or a cross-industry method for taking an AI use case from opportunity to closed-loop delivery.
+description: Applied AI operator playbook for delivery leads who need to qualify an AI opportunity, turn messy operational reality into a structured business system, design a minimum viable loop, and define a delivery-ready expansion path. Use when the user needs full-cycle FDE judgment, operator-grade artifacts, state-action-evidence framing, pilot design, or a cross-industry method for taking an AI use case from opportunity to closed-loop delivery.
 ---
 
-# FDE Operator OS
+# Applied AI Operator OS
 
 ## Role
 
 Use this skill as an operator doctrine for senior FDE, applied AI, and delivery leads.
 
 This is not a generic workshop template and not a field-notes checklist. It is a decision system for turning a customer problem into a delivery-worthy AI operating loop.
+
+FDE here is not on-site outsourcing. It is the operating role that turns field ambiguity into reusable delivery and product capability.
 
 ## Default Stance
 
@@ -18,6 +20,7 @@ This is not a generic workshop template and not a field-notes checklist. It is a
 3. Solve for closed-loop outcomes, not feature demos.
 4. Keep AI on the narrowest surface that creates measurable value.
 5. Treat human trust, governance, and operating ownership as first-class design inputs.
+6. Every delivery should leave behind at least one reusable asset.
 
 Read `${CLAUDE_SKILL_DIR}/references/doctrine.md` first when the request is broad, strategic, or politically messy.
 
@@ -28,7 +31,7 @@ Use this skill when the user needs any of the following:
 - decide whether an industry or customer problem is worth an AI engagement
 - turn a messy business situation into a structured system definition
 - define the full-cycle FDE path from discovery to pilot to delivery
-- design ontology, workflow, action surfaces, and human-in-the-loop boundaries
+- design business objects, workflow, action surfaces, and human-in-the-loop boundaries
 - compress a broad opportunity into a minimum viable loop or POC
 - create operator-grade artifacts that another engineer or delivery lead can continue from
 
@@ -162,13 +165,13 @@ Failure signals:
 - the system is trying to solve every stakeholder request at once
 - the problem statement is really a tool wishlist
 
-## Stage 4: Ontology & Action Model
+## Stage 4: State, Action & Evidence Model
 
 Goal: translate the business world into an AI-operable system.
 
 Answer:
 
-- What are the objects, relationships, states, actions, rules, events, and permissions?
+- What are the key business objects, relationships, states, actions, rules, events, and permissions?
 - Which actions are write-capable versus advisory only?
 - Which states require human confirmation?
 - What evidence moves an item from one state to another?
@@ -292,6 +295,43 @@ Failure signals:
 - scaling is justified only by leadership enthusiasm
 - pilot success criteria do not map to expansion criteria
 
+## Post-Delivery Overlay: Asset Distillation Loop
+
+Goal: convert delivery learning into reusable capability.
+
+Run this after a credible loop exists. This is not Stage 8 of delivery design. It is the closeout overlay that prevents the work from collapsing into custom-project labor.
+
+Answer:
+
+- What should be promoted from this case into a reusable problem pattern?
+- Which workflow or operating steps are stable enough to become a template?
+- What data-readiness, eval, or governance checks should be reused next time?
+- Which failure cases should become test cases?
+- What should be turned into SOP, skill, internal tool, or product backlog?
+- What is still too project-specific to promote?
+
+Do not skip:
+
+- source evidence for each lesson
+- promotion threshold for reusability
+- the difference between project notes and reusable assets
+- explicit owner for maintaining promoted assets
+
+Output artifacts:
+
+- `${CLAUDE_SKILL_DIR}/references/asset-distillation-loop.md`
+- `${CLAUDE_SKILL_DIR}/assets/templates/asset-distillation-log.md`
+
+Exit when:
+
+- at least one reusable asset is defined with owner, proof, and target reuse context
+
+Failure signals:
+
+- lessons remain trapped in narrative debriefs
+- project artifacts cannot be reused without the original operator present
+- no feedback path exists from delivery back into product, template, or eval assets
+
 ## Artifact Set
 
 The core operator artifacts are:
@@ -299,11 +339,15 @@ The core operator artifacts are:
 1. `Mission Brief`
 2. `Operational Reality Map`
 3. `System Problem Frame`
-4. `Ontology & Action Model`
+4. `State, Action & Evidence Model`
 5. `AI Intervention Design`
 6. `Minimum Viable Loop`
 7. `POC Acceptance Contract`
 8. `Expansion Roadmap`
+
+Post-delivery closeout should also produce:
+
+9. `Asset Distillation Log`
 
 Use the templates in `${CLAUDE_SKILL_DIR}/assets/templates/`.
 
@@ -319,12 +363,13 @@ Rules:
 - Doctrine: `${CLAUDE_SKILL_DIR}/references/doctrine.md`
 - Heuristics: `${CLAUDE_SKILL_DIR}/references/operator-heuristics.md`
 - Failure patterns: `${CLAUDE_SKILL_DIR}/references/failure-patterns.md`
+- Asset distillation: `${CLAUDE_SKILL_DIR}/references/asset-distillation-loop.md`
 
 ## Case Handling
 
 Keep domain cases outside the core skill by default.
 
-If you are validating this skill against a local project, treat that case material as private working context, not as part of the shipped skill. Use local notes or a separate private case pack to stress-test the doctrine, artifacts, and heuristics.
+If you are validating this skill against a local project, treat that case material as private working context, not as part of the shipped skill. Use local notes or a separate private case pack to stress-test the doctrine, artifacts, heuristics, and asset-distillation outputs.
 
 ## Output Style
 

@@ -1,4 +1,6 @@
-# Ontology & Action Model
+# State, Action & Evidence Model
+
+Alias: `Ontology & Action Model`
 
 ## Use
 
@@ -32,9 +34,9 @@ A technical team can infer what the system reads, what it can change, and what p
 ## Template
 
 ```md
-# Ontology & Action Model
+# State, Action & Evidence Model
 
-## Objects
+## Business Objects
 
 - ...
 

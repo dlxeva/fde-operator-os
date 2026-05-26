@@ -1,4 +1,4 @@
 interface:
-  display_name: "FDE Operator OS"
-  short_description: "Qualify AI bets and design delivery loops"
-  default_prompt: "Use $fde-operator-os to qualify an AI opportunity, model the operating system, and define a delivery-ready pilot plus expansion path."
+  display_name: "Applied AI Operator OS"
+  short_description: "Qualify AI bets, design loops, and distill reusable assets"
+  default_prompt: "Use $fde-operator-os to qualify an AI opportunity, model the operating system, define a delivery-ready pilot, and distill reusable assets from the work."
