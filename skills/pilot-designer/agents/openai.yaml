@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pilot Designer"
+  short_description: "Compress a bounded loop into a credible pilot with acceptance and eval"
+  default_prompt: "Use pilot-designer to define the minimum viable loop, pilot acceptance contract, and eval support for this bounded AI workflow."

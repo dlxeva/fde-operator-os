@@ -142,6 +142,11 @@ The skill runs a seven-stage decision chain:
 
 The seven stages are followed by a post-delivery asset distillation overlay so project learning does not die inside one customer engagement.
 
+This repository should now be understood as a **core + suite** shape:
+
+- the root `fde-operator-os` skill is the canonical doctrine and router
+- lighter child skills handle the most common request shapes with less invocation overhead
+
 It ships with eight core operator artifacts plus one closeout artifact:
 
 - Mission Brief
@@ -201,6 +206,19 @@ Use [`examples/first-run-minimal-loop/`](./examples/first-run-minimal-loop/) whe
 
 Use [`examples/synthetic-public-safety-ai/operator-loop-pack.md`](./examples/synthetic-public-safety-ai/operator-loop-pack.md) when you want one compact synthetic example that shows loop design, case replay, eval, governance, and day-2 fragments together.
 
+### Skill Suite
+
+The repository now supports a suite direction rather than a single ever-growing execution skill.
+
+Current split:
+
+- root `fde-operator-os` -> doctrine + router
+- `skills/mission-qualifier/` -> early opportunity qualification
+- `skills/reality-capture/` -> operational reality and case replay
+- `skills/pilot-designer/` -> bounded pilot, acceptance, and eval design
+
+The leaf skills are intentionally lighter than the root skill. They are meant to reduce invocation weight and let the model operate on one request shape at a time.
+
 ### Repository Layout
 
 ```text
@@ -213,6 +231,19 @@ fde-operator-os/
 ├── SKILL.md
 ├── README.md
 ├── LICENSE
+├── skills/
+│   ├── mission-qualifier/
+│   │   ├── SKILL.md
+│   │   └── agents/
+│   │       └── openai.yaml
+│   ├── reality-capture/
+│   │   ├── SKILL.md
+│   │   └── agents/
+│   │       └── openai.yaml
+│   └── pilot-designer/
+│       ├── SKILL.md
+│       └── agents/
+│           └── openai.yaml
 ├── examples/
 │   ├── case-pack-template/
 │   │   └── README.md
@@ -285,6 +316,7 @@ You can use this repository in two ways:
 1. As a Codex-style skill by copying the folder into your local skills directory.
 2. As a portable Applied AI delivery playbook by adapting the doctrine, references, and templates to your own agent or delivery workflow.
 3. As a host-neutral skill pack for OpenClaw, Hermes, Claude Code, or other runtimes that can reuse prompt packs, templates, and references.
+4. As a skill suite source where the root skill acts as router/core and selected child skills are exposed as lighter execution surfaces.
 
 Example Codex-style install:
 
@@ -304,6 +336,8 @@ Optional short alias for hosts that support wrappers:
 - invoke with `$fde` or map `/FDE` in hosts that support slash aliases
 
 See [`references/runtime-portability.md`](./references/runtime-portability.md) for host-neutral guidance across Codex, OpenClaw, Hermes, and Claude Code.
+
+If you want a lighter execution surface, expose one or more child skills directly from `skills/` instead of always invoking the root skill.
 
 ### Design Principles
 
@@ -560,6 +594,8 @@ Copy-Item -Recurse .\fde-operator-os "$HOME\.codex\skills\"
 ### 当前状态
 
 这套 skill 仍在持续打磨中。当前的 doctrine 和 artifact 体系已经足够稳定，可以直接使用；但随着我自己的 Applied AI / FDE 实践继续推进，仓库里还会不断吸收新的真实交付模式、失败案例、operator 判断，以及可以复用的资产沉淀。
+
+当前也在往 `skill suite` 方向演进：保留 root skill 作为 doctrine + router，同时把高频请求形状拆成更轻的子 skill，减少单 skill 过重带来的效果损耗。
 
 ### License
 

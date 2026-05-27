@@ -30,6 +30,24 @@ This is not a generic workshop template and not a field-notes checklist. It is a
 
 FDE here is not on-site outsourcing. It is the operating role that turns field ambiguity into reusable delivery and product capability.
 
+## Router Behavior
+
+This core skill is the canonical doctrine and routing surface.
+
+Default behavior:
+
+- classify the request shape first
+- route to a lighter leaf skill when one request shape dominates
+- run the full end-to-end doctrine directly only when the user explicitly asks for full-cycle operator work or when the problem truly spans multiple shapes
+
+Preferred request-shape routing:
+
+- qualification-heavy requests -> `mission-qualifier`
+- reality and workflow reconstruction -> `reality-capture`
+- bounded pilot compression -> `pilot-designer`
+
+The router should avoid expanding into the full seven-stage workflow when a lighter skill can solve the request with less context and less process overhead.
+
 ## Default Stance
 
 1. Qualify before designing.

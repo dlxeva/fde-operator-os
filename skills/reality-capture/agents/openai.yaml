@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reality Capture"
+  short_description: "Reconstruct the real operating workflow and case replays"
+  default_prompt: "Use reality-capture to produce an Operational Reality Map and Case Replay Pack from the available evidence."

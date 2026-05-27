@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mission Qualifier"
+  short_description: "Qualify whether an AI opportunity is worth pursuing"
+  default_prompt: "Use mission-qualifier to decide whether this AI opportunity is worth pursuing and produce a Mission Brief."
