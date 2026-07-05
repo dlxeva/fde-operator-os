@@ -54,3 +54,15 @@ A reviewer should be able to say:
 - explicit failure and rollback conditions
 - eval support included by default for credible pilots
 
+## Template Reference
+
+This skill uses four core templates:
+
+- `assets/templates/ai-intervention-design.md`
+- `assets/templates/minimum-viable-loop.md`
+- `assets/templates/poc-acceptance-contract.md`
+- `assets/templates/eval-pack.md`
+
+**Hermes**: `skill_view(name='fde-operator-os', file_path='assets/templates/<template-name>')`
+**Codex**: `${CLAUDE_SKILL_DIR}/assets/templates/<template-name>`
+

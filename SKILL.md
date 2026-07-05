@@ -22,6 +22,14 @@ Important:
 - Slash-command behavior such as `/FDE` depends on the host runtime.
 - If a runtime does not support aliases natively, keep `fde-operator-os` as the canonical package name and add local wrappers or prompt aliases in that host.
 
+## Template Path Resolution
+
+This skill uses `${CLAUDE_SKILL_DIR}` in template/artifact references throughout. That convention is **Codex-specific** and does NOT resolve in other runtimes.
+
+**Hermes**: Load templates via `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`. The first `skill_view()` call returns a `linked_files` dict showing all available references, assets, and templates.
+
+**Other runtimes**: Treat `assets/templates/` and `references/` as relative paths from the skill root. Browse the directory to find files rather than relying on `${CLAUDE_SKILL_DIR}` expansion.
+
 ## Role
 
 Use this skill as an operator doctrine for senior FDE, applied AI, and delivery leads.

@@ -51,3 +51,10 @@ A reviewer should be able to say:
 - explicit go / no-go posture
 - explicit unknowns requiring validation
 
+## Template Reference
+
+This skill uses the core `assets/templates/mission-brief.md` template.
+
+- **Hermes**: `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`
+- **Codex**: `${CLAUDE_SKILL_DIR}/assets/templates/mission-brief.md`
+

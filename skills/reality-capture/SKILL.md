@@ -49,3 +49,13 @@ Another operator should be able to replay how the work actually moves without in
 - explicit missing evidence
 - explicit distinction between what the case proves and does not prove
 
+## Template Reference
+
+This skill uses two core templates:
+
+- `assets/templates/operational-reality-map.md`
+- `assets/templates/case-replay-pack.md`
+
+**Hermes**: `skill_view(name='fde-operator-os', file_path='assets/templates/<template-name>')`
+**Codex**: `${CLAUDE_SKILL_DIR}/assets/templates/<template-name>`
+
