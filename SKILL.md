@@ -24,11 +24,13 @@ Important:
 
 ## Template Path Resolution
 
-This skill uses `${CLAUDE_SKILL_DIR}` in template/artifact references throughout. That convention is **Codex-specific** and does NOT resolve in other runtimes.
+Template and reference paths in this skill are written as relative paths from the skill root (for example `assets/templates/mission-brief.md`). Treat them as relative to the folder containing this `SKILL.md`.
+
+**Codex**: older Codex variants used a `${CLAUDE_SKILL_DIR}` prefix; prepend your runtime's skill-dir variable if relative paths do not resolve.
 
 **Hermes**: Load templates via `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`. The first `skill_view()` call returns a `linked_files` dict showing all available references, assets, and templates.
 
-**Other runtimes**: Treat `assets/templates/` and `references/` as relative paths from the skill root. Browse the directory to find files rather than relying on `${CLAUDE_SKILL_DIR}` expansion.
+**Other runtimes**: Treat `assets/templates/` and `references/` as relative paths from the skill root. Browse the directory to find files.
 
 ## Role
 
@@ -66,7 +68,7 @@ The router should avoid expanding into the full seven-stage workflow when a ligh
 6. Every delivery should leave behind at least one reusable asset.
 7. If the account context is broad, pick one operator loop before summarizing the whole project.
 
-Read `${CLAUDE_SKILL_DIR}/references/doctrine.md` first when the request is broad, strategic, or politically messy.
+Read `references/doctrine.md` first when the request is broad, strategic, or politically messy.
 
 ## First-Run Mode
 
@@ -84,7 +86,7 @@ This mode exists to prevent first-time use from collapsing into generic account 
 
 ## Engagement Modes
 
-Use `${CLAUDE_SKILL_DIR}/references/engagement-modes.md` to adapt the doctrine to different field situations without forcing every request through the deepest possible output.
+Use `references/engagement-modes.md` to adapt the doctrine to different field situations without forcing every request through the deepest possible output.
 
 Default modes:
 
@@ -170,7 +172,7 @@ Do not skip:
 
 Output artifact:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/mission-brief.md`
+- `assets/templates/mission-brief.md`
 
 Exit when:
 
@@ -205,14 +207,16 @@ Do not skip:
 
 Output artifact:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/operational-reality-map.md`
-- `${CLAUDE_SKILL_DIR}/assets/templates/case-replay-pack.md` as a supporting artifact when concrete or disputed cases are available
+- `assets/templates/operational-reality-map.md`
+- `assets/templates/case-replay-pack.md` as a supporting artifact when concrete or disputed cases are available
+- `assets/templates/reality-capture-gating.md` as a living checklist opened here and kept current through Stage 5
 
-Read `${CLAUDE_SKILL_DIR}/references/operator-heuristics.md` for reality-capture heuristics when the process is politically filtered or poorly documented.
+Read `references/operator-heuristics.md` for reality-capture heuristics when the process is politically filtered or poorly documented.
 
 Exit when:
 
 - you can reconstruct the current operating loop without relying on stakeholder rhetoric
+- the Reality Capture Gate is open with every field either backed by real evidence or explicitly carried as an open gating item
 
 Failure signals:
 
@@ -241,7 +245,7 @@ Do not skip:
 
 Output artifact:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/system-problem-frame.md`
+- `assets/templates/system-problem-frame.md`
 
 Exit when:
 
@@ -272,9 +276,9 @@ Do not skip:
 
 Output artifact:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/ontology-action-model.md`
+- `assets/templates/ontology-action-model.md`
 
-Read `${CLAUDE_SKILL_DIR}/references/doctrine.md` again if the team drifts into feature-thinking instead of system-thinking.
+Read `references/doctrine.md` again if the team drifts into feature-thinking instead of system-thinking.
 
 Exit when:
 
@@ -304,9 +308,9 @@ Do not skip:
 
 Output artifacts:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/ai-intervention-design.md`
-- `${CLAUDE_SKILL_DIR}/assets/templates/minimum-viable-loop.md`
-- `${CLAUDE_SKILL_DIR}/assets/templates/eval-pack.md` as a required support artifact for credible pilots
+- `assets/templates/ai-intervention-design.md`
+- `assets/templates/minimum-viable-loop.md`
+- `assets/templates/eval-pack.md` as a required support artifact for credible pilots
 
 Exit when:
 
@@ -320,6 +324,15 @@ Failure signals:
 ## Stage 6: Delivery Architecture
 
 Goal: define how the loop runs in the real world.
+
+Entry gate — do not start this stage until the Reality Capture Gate reads evidence-sufficient, or partial with the inferred sections explicitly flagged. If the gate is thin (most fields inferred or narrative-only), stay in Stage 2-5, name the gaps in the gate, and re-collect. Architecture built on inferred reality has to be rebuilt later.
+
+Minimum evidence to enter Stage 6:
+
+- at least one real clean case and one real ugly case collected (not inferred)
+- the operating owner and exception owner named (not just a role)
+- the current cycle time measured, not estimated
+- the knowledge base that the loop depends on structured and loaded, or its absence named as a blocking gating item
 
 Answer:
 
@@ -337,12 +350,12 @@ Do not skip:
 
 Output addition:
 
-- add delivery architecture details into `${CLAUDE_SKILL_DIR}/assets/templates/minimum-viable-loop.md`
-- lock acceptance expectations in `${CLAUDE_SKILL_DIR}/assets/templates/poc-acceptance-contract.md`
-- define trust, permissions, and rollback in `${CLAUDE_SKILL_DIR}/assets/templates/governance-and-risk-overlay.md`
-- define support, monitoring, and exception ownership in `${CLAUDE_SKILL_DIR}/assets/templates/day-2-operations-plan.md`
+- add delivery architecture details into `assets/templates/minimum-viable-loop.md`
+- lock acceptance expectations in `assets/templates/poc-acceptance-contract.md`
+- define trust, permissions, and rollback in `assets/templates/governance-and-risk-overlay.md`
+- define support, monitoring, and exception ownership in `assets/templates/day-2-operations-plan.md`
 
-Read `${CLAUDE_SKILL_DIR}/references/failure-patterns.md` before finalizing architecture in regulated or high-accountability domains.
+Read `references/failure-patterns.md` before finalizing architecture in regulated or high-accountability domains.
 
 Exit when:
 
@@ -374,7 +387,7 @@ Do not skip:
 
 Output artifact:
 
-- `${CLAUDE_SKILL_DIR}/assets/templates/expansion-roadmap.md`
+- `assets/templates/expansion-roadmap.md`
 
 Exit when:
 
@@ -390,6 +403,8 @@ Failure signals:
 Goal: convert delivery learning into reusable capability.
 
 Run this after a credible loop exists. This is not Stage 8 of delivery design. It is the closeout overlay that prevents the work from collapsing into custom-project labor.
+
+Early-stage mode: the overlay can also be run prospectively before a loop is delivered, to identify asset candidates early. In this mode most candidates will be marked `hold` pending POC evidence, which is correct and useful — the value is naming what to watch for and where it should land. At least one candidate should aim for an immediate `promote` decision (for example a reusable data-readiness or reality-capture pattern distilled from the current run), so the early pass still leaves something reusable behind. The standard closeout run later upgrades `hold` candidates to `promote` or `reject` as evidence arrives.
 
 Answer:
 
@@ -410,8 +425,8 @@ Do not skip:
 
 Output artifacts:
 
-- `${CLAUDE_SKILL_DIR}/references/asset-distillation-loop.md`
-- `${CLAUDE_SKILL_DIR}/assets/templates/asset-distillation-log.md`
+- `references/asset-distillation-loop.md`
+- `assets/templates/asset-distillation-log.md`
 
 Exit when:
 
@@ -447,7 +462,7 @@ Post-delivery closeout should also produce:
 
 13. `Asset Distillation Log`
 
-Use the templates in `${CLAUDE_SKILL_DIR}/assets/templates/`.
+Use the templates in `assets/templates/`.
 
 Rules:
 
@@ -456,13 +471,27 @@ Rules:
 3. Treat contradictions as design inputs, not cleanup noise.
 4. Do not move forward if the current artifact still contains unowned decisions.
 
+Several fields recur across artifacts (rollback condition, operating owner, fallback mode, drift signal). To avoid drift between copies, define each once in the artifact below and reference it elsewhere rather than re-stating it.
+
+Field source-of-truth:
+
+- **Operating owner** — Day-2 Operations Plan (referenced by Minimum Viable Loop)
+- **Exception owner** — Day-2 Operations Plan (referenced by Governance And Risk Overlay)
+- **Rollback condition** — POC Acceptance Contract (referenced by Minimum Viable Loop and Governance And Risk Overlay)
+- **Fallback mode** — Minimum Viable Loop (referenced by Day-2 Operations Plan)
+- **Drift / degradation signal** — Day-2 Operations Plan (referenced by Minimum Viable Loop)
+- **Success / failure criteria** — POC Acceptance Contract (referenced by Eval Pack)
+- **AI authority level** — Governance And Risk Overlay (referenced by AI Intervention Design)
+
+When an artifact is produced before its source-of-truth artifact exists, fill the field where you are and mark it "to be consolidated into [target artifact] when produced."
+
 ## References
 
-- Doctrine: `${CLAUDE_SKILL_DIR}/references/doctrine.md`
-- Heuristics: `${CLAUDE_SKILL_DIR}/references/operator-heuristics.md`
-- Failure patterns: `${CLAUDE_SKILL_DIR}/references/failure-patterns.md`
-- Asset distillation: `${CLAUDE_SKILL_DIR}/references/asset-distillation-loop.md`
-- Engagement modes: `${CLAUDE_SKILL_DIR}/references/engagement-modes.md`
+- Doctrine: `references/doctrine.md`
+- Heuristics: `references/operator-heuristics.md`
+- Failure patterns: `references/failure-patterns.md`
+- Asset distillation: `references/asset-distillation-loop.md`
+- Engagement modes: `references/engagement-modes.md`
 
 ## Case Handling
 

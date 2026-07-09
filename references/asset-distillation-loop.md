@@ -4,6 +4,11 @@ Every delivery case should leave behind at least one reusable asset.
 
 This loop exists to keep FDE work from collapsing into high-end project labor. A project is not complete when one customer loop ships. It is complete when something from that loop becomes easier to reuse, test, or productize in the next case.
 
+## When To Run
+
+- **Closeout run**: after a credible loop exists and has produced evidence. This is the default. Candidates are judged on real proof and promoted or rejected.
+- **Early-stage (prospective) run**: before a loop is delivered, to identify asset candidates early and name what to watch for. In this mode most candidates will be `hold` pending evidence — that is correct. Aim for at least one immediate `promote` (often a reusable data-readiness or reality-capture pattern distilled from the current run) so the early pass is not empty. A later closeout run upgrades the `hold` candidates as evidence arrives.
+
 ## What To Distill
 
 Promote lessons into one or more of these asset types:

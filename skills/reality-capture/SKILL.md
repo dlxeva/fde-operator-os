@@ -57,5 +57,5 @@ This skill uses two core templates:
 - `assets/templates/case-replay-pack.md`
 
 **Hermes**: `skill_view(name='fde-operator-os', file_path='assets/templates/<template-name>')`
-**Codex**: `${CLAUDE_SKILL_DIR}/assets/templates/<template-name>`
+**Codex / others**: read `assets/templates/<template-name>` relative to the skill root.
 

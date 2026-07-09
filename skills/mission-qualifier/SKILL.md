@@ -56,5 +56,5 @@ A reviewer should be able to say:
 This skill uses the core `assets/templates/mission-brief.md` template.
 
 - **Hermes**: `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`
-- **Codex**: `${CLAUDE_SKILL_DIR}/assets/templates/mission-brief.md`
+- **Codex / others**: read `assets/templates/mission-brief.md` relative to the skill root.
 
