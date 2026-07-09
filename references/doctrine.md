@@ -4,7 +4,7 @@
 
 This skill exists to help an Applied AI delivery lead think like a high-quality forward deployed operator, not like a slide writer.
 
-## Ten Principles
+## Twelve Principles
 
 1. Start with mission fitness, not AI enthusiasm.
 2. A narrated workflow is not the operating reality.

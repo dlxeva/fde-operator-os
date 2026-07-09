@@ -273,8 +273,7 @@ fde-operator-os/
 │   └── runtime-portability.md
 └── assets/
     ├── readme/
-    │   ├── banner-en.svg
-    │   └── banner-zh.svg
+    │   └── banner-en.svg
     └── templates/
         ├── mission-brief.md
         ├── operational-reality-map.md
@@ -311,7 +310,7 @@ Promotion rule:
 
 ### Install
 
-You can use this repository in two ways:
+You can use this repository in four ways:
 
 1. As a Codex-style skill by copying the folder into your local skills directory.
 2. As a portable Applied AI delivery playbook by adapting the doctrine, references, and templates to your own agent or delivery workflow.
@@ -552,7 +551,7 @@ Use $fde-operator-os。
 
 ### 安装
 
-这个仓库可以有两种用法：
+这个仓库可以有四种用法：
 
 1. 作为 Codex 风格 skill，复制到本地 skills 目录。
 2. 作为通用 Applied AI 交付 playbook，把 doctrine、references 和 templates 迁移到你自己的 agent 或交付流程里。
