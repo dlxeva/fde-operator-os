@@ -281,6 +281,7 @@ fde-operator-os/
         ├── ontology-action-model.md
         ├── ai-intervention-design.md
         ├── case-replay-pack.md
+        ├── reality-capture-gating.md
         ├── eval-pack.md
         ├── governance-and-risk-overlay.md
         ├── day-2-operations-plan.md
