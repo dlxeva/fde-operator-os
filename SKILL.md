@@ -273,7 +273,7 @@ Failure signals:
 - acceptance defined after build
 - pilot completion treated as launch approval
 
-## Stage 6: Delivery Architecture And Production Readiness
+## Stage 6: Delivery Architecture
 
 **Goal:** define how the loop enters and survives real operator work.
 
