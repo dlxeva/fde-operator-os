@@ -150,8 +150,15 @@ One case can stress the method. It cannot redefine the cross-industry doctrine b
 Run before every pull request or handoff:
 
 ```bash
+make check
+```
+
+Equivalent direct commands:
+
+```bash
 python tools/validate_repo.py
 python -m unittest discover -s tests -v
+python -m compileall -q tools tests
 ```
 
 The validator checks:
