@@ -85,11 +85,18 @@ The repository now treats artifact quality as an enforceable contract.
 - [`tools/validate_repo.py`](./tools/validate_repo.py) detects template drift, missing example fields, broken links, invalid aliases, unknown gate references, and incomplete case manifests.
 - [`.github/workflows/validate.yml`](./.github/workflows/validate.yml) runs validation and unit tests on pushes and pull requests.
 
-Run locally:
+Run the full local check:
+
+```bash
+make check
+```
+
+Equivalent direct commands:
 
 ```bash
 python tools/validate_repo.py
 python -m unittest discover -s tests -v
+python -m compileall -q tools tests
 ```
 
 The validator uses only the Python standard library.
@@ -161,6 +168,7 @@ Optional short wrappers live under [`aliases/`](./aliases/). Runtime guidance is
 ```text
 fde-operator-os/
 ├── SKILL.md                  # canonical doctrine and router
+├── Makefile                  # local validation entrypoint
 ├── skills/                   # focused execution skills
 ├── references/               # doctrine, heuristics, practice system, failures
 ├── assets/templates/         # operator and control artifacts
