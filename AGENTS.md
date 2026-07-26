@@ -21,11 +21,12 @@ Before changing behavior, structure, or templates, read:
 
 1. `README.md`
 2. `SKILL.md`
-3. `contracts/artifacts.json`
-4. `references/doctrine.md`
-5. `references/fde-practice-system.md`
-6. the relevant child skill under `skills/`
-7. the relevant template under `assets/templates/`
+3. `contracts/stages.json`
+4. `contracts/artifacts.json`
+5. `references/doctrine.md`
+6. `references/fde-practice-system.md`
+7. the relevant child skill under `skills/`
+8. the relevant template under `assets/templates/`
 
 For failure, governance, or production work, also read:
 
@@ -46,10 +47,12 @@ Keep these responsibilities distinct:
 - `skills/` — lighter request-shaped execution skills
 - `references/` — reusable doctrine, practice system, heuristics, and failure patterns
 - `assets/templates/` — human-readable operator and control artifacts
-- `contracts/` — machine-readable artifact, gate, alias, and case contracts
+- `contracts/stages.json` — canonical seven-stage registry
+- `contracts/artifacts.json` — artifact, field, gate, alias, and source-of-truth registry
+- `contracts/case-manifest.schema.json` — case-index contract
 - `examples/` — synthetic, public, sanitized, or benchmark cases
 - `tools/` — repository validation and maintenance utilities
-- `tests/` — validation regression tests
+- `tests/` — validation and contract regression tests
 - `.github/workflows/` — continuous validation
 - `aliases/` — runtime aliases and wrappers
 - `agents/` — host-facing metadata
@@ -72,6 +75,13 @@ Do not turn this repository into:
 Domain implementation and private cases belong in separate repositories or private working context.
 
 ## Contract-First Change Protocol
+
+When changing the delivery stages:
+
+1. Update `contracts/stages.json` first.
+2. Update the matching `SKILL.md` headings and README stage rows.
+3. Keep artifact stage references and gate `after_stage` values valid.
+4. Run stage-contract tests and the full repository check.
 
 When adding or changing an artifact:
 
@@ -161,8 +171,11 @@ python -m unittest discover -s tests -v
 python -m compileall -q tools tests
 ```
 
-The validator checks:
+The automated checks cover:
 
+- canonical stage sequence and unique stage IDs
+- root Skill and README stage-name alignment
+- artifact and Gate stage references
 - artifact-contract shape
 - template required-field drift
 - required template sections and markers
@@ -181,10 +194,11 @@ A manual inspection can supplement these commands. It cannot replace a failing a
 Before finishing a change, verify:
 
 1. the change has a clear use condition and stop condition
-2. root and child Skills agree
-3. canonical templates and machine contracts agree
-4. strict examples still satisfy their contract
-5. new field practices route into production, eval, incident, or product-learning controls
-6. public examples contain no private customer information
-7. validation and unit tests pass
-8. the PR states what was tested and what remains unproven
+2. stage registry, root Skill, and README agree
+3. root and child Skills agree
+4. canonical templates and machine contracts agree
+5. strict examples still satisfy their contract
+6. new field practices route into production, eval, incident, or product-learning controls
+7. public examples contain no private customer information
+8. validation and unit tests pass
+9. the PR states what was tested and what remains unproven
