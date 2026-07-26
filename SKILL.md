@@ -239,7 +239,7 @@ Failure signals:
 - actions without authority or owner
 - state changes without evidence or audit
 
-## Stage 5: Intervention And Pilot Design
+## Stage 5: Intervention & Pilot Design
 
 **Goal:** choose the smallest AI surface that can prove or disprove value.
 
