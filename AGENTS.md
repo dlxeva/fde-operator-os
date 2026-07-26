@@ -1,114 +1,181 @@
 # AGENTS.md
 
-Repository instructions for Codex, Hermes, OpenClaw, Claude Code, and other coding agents working on this repo.
+Repository instructions for Codex, Hermes, OpenClaw, Claude Code, and other coding agents working on this repository.
 
 ## Mission
 
-Maintain `fde-operator-os` as a compact Applied AI Operator OS for qualifying AI opportunities, reconstructing operational reality, designing bounded pilots, and distilling reusable delivery assets.
+Maintain `fde-operator-os` as a compact, evidence-led Applied AI Operator OS that can:
 
-This repository is a skill / playbook package, not an application implementation repo.
+- qualify an AI opportunity
+- reconstruct operational reality
+- design a bounded pilot
+- make an explicit production-readiness decision
+- operate and learn from a live loop
+- distill reusable delivery and product assets
+
+This is a skill, method, artifact, contract, and example repository. Keep application implementation in separate repositories.
 
 ## Read First
 
-Before editing behavior, structure, or templates, read:
+Before changing behavior, structure, or templates, read:
 
 1. `README.md`
 2. `SKILL.md`
-3. `references/doctrine.md`
-4. the relevant child skill under `skills/`
-5. the relevant template under `assets/templates/`
+3. `contracts/artifacts.json`
+4. `references/doctrine.md`
+5. `references/fde-practice-system.md`
+6. the relevant child skill under `skills/`
+7. the relevant template under `assets/templates/`
 
-For changes involving failure modes, also read:
+For failure, governance, or production work, also read:
 
 - `references/failure-patterns.md`
 - `references/operator-heuristics.md`
+- `references/engagement-modes.md`
 
 For runtime or packaging changes, also read:
 
 - `references/runtime-portability.md`
 - `aliases/fde/SKILL.md`
 
+## Repository Architecture
+
+Keep these responsibilities distinct:
+
+- `SKILL.md` — canonical doctrine and router
+- `skills/` — lighter request-shaped execution skills
+- `references/` — reusable doctrine, practice system, heuristics, and failure patterns
+- `assets/templates/` — human-readable operator and control artifacts
+- `contracts/` — machine-readable artifact, gate, alias, and case contracts
+- `examples/` — synthetic, public, sanitized, or benchmark cases
+- `tools/` — repository validation and maintenance utilities
+- `tests/` — validation regression tests
+- `.github/workflows/` — continuous validation
+- `aliases/` — runtime aliases and wrappers
+- `agents/` — host-facing metadata
+
+Add a top-level directory only when these boundaries cannot hold the work.
+
 ## Hard Boundaries
 
 Do not turn this repository into:
 
-- a web app
+- a web application
 - a backend service
 - a frontend implementation
-- an OCR/PDF parser
-- a meeting recorder
-- an ASR/TTS app
-- a production browser automation project
-- a generic AI prompt collection
-- a broad consulting template dump
+- an OCR, PDF, ASR, TTS, or meeting-recording product
+- a production browser automation system
+- a generic prompt collection
+- a broad consulting-template dump
+- a container for private customer material
 
-Do not add domain-specific private customer material to the core skill. Domain cases should live as examples, benchmark packs, or private local working context.
+Domain implementation and private cases belong in separate repositories or private working context.
 
-## Repository Shape
+## Contract-First Change Protocol
 
-Keep the current structure stable:
+When adding or changing an artifact:
 
-- `SKILL.md` — root doctrine and router
-- `skills/` — lighter leaf skills for common request shapes
-- `references/` — reusable doctrine, heuristics, failure patterns, and portability guidance
-- `assets/templates/` — operator artifacts and support artifacts
-- `examples/` — synthetic or reusable case demonstrations
-- `aliases/` — runtime aliases and wrappers
-- `agents/` — host-facing metadata
+1. Update `contracts/artifacts.json`.
+2. Update the canonical template under `assets/templates/`.
+3. Update root and child Skill references.
+4. Update a strict synthetic example when the artifact has one.
+5. Update README or reference documentation when user-facing behavior changes.
+6. Run the validator and tests.
 
-Add a new top-level directory only when the existing structure clearly cannot hold the work.
+When adding or changing a case:
 
-## Editing Discipline
+1. Keep the case synthetic, public, or explicitly sanitized.
+2. Add or update `case-manifest.json`.
+3. Keep artifact IDs aligned with `contracts/artifacts.json`.
+4. Record gate posture honestly: `pass`, `conditional`, `fail`, `hold`, or `not-run`.
+5. Run the validator and tests.
 
-Prefer small, reviewable changes.
+## Canonical Paths And Compatibility
 
-When editing the root skill, check whether child skills need the same change.
+`assets/templates/state-action-evidence-model.md` is canonical.
 
-When editing child skills, check whether the root skill still routes to them correctly.
+`assets/templates/ontology-action-model.md` is a compatibility redirect. Do not duplicate fields or template content in the alias file.
 
-When adding or renaming a template, update all relevant references in:
+When retaining any legacy path:
 
-- `README.md`
-- `SKILL.md`
-- child skill `SKILL.md` files
-- `references/runtime-portability.md` when runtime loading is affected
+- declare the canonical path
+- keep the alias thin
+- add the alias to `contracts/artifacts.json`
+- let the validator enforce the relationship
 
-When keeping a legacy filename for compatibility, state the alias explicitly inside the file.
+## Artifact Discipline
 
-## Output Discipline
+Operator-grade artifacts contain:
 
-Artifacts should be operator-grade:
+- a judgment or decision posture
+- evidence separated from inference
+- named unknowns and blockers
+- owner and authority
+- trigger, object, action, output, and proof where relevant
+- fallback, rollback, audit, and exception handling where relevant
+- acceptance or launch gate
+- next proof or staged action
 
-- judgment first
-- evidence versus inference separated
-- explicit unknowns and risks
-- staged next action
-- concrete owner, trigger, object, output, acceptance, fallback, and evidence where relevant
+Do not reward polished guessing. Keep missing evidence visible.
 
-Do not reward polished guessing. Mark gaps as gaps.
+## Source-Of-Truth Discipline
+
+Cross-artifact fields have one canonical source defined in `contracts/artifacts.json`.
+
+Examples:
+
+- operating owner -> Day-2 Operations Plan
+- rollback condition -> POC Acceptance Contract
+- AI authority level -> Governance And Risk Overlay
+- production launch decision -> Production Readiness Review
+- field constraint and destination -> Field Signal Log
+
+Reference the canonical field from other artifacts. When the source artifact has not been created, mark the temporary value for later consolidation.
 
 ## Case Discipline
 
-Keep core doctrine cross-industry.
+A shipped case must be:
 
-A case may enter the repository only if it is:
-
-- synthetic
-- public
-- sanitized
+- synthetic, public, or sanitized
 - separated from core doctrine
-- useful for demonstrating or validating the skill
+- useful for teaching or regression validation
+- indexed through `case-manifest.json`
+- explicit about which gates are proven, conditional, failed, held, or unrun
 
-Do not let one case contaminate the generic method.
+One case can stress the method. It cannot redefine the cross-industry doctrine by itself.
 
-## Validation Checklist
+## Validation Commands
 
-Before finishing a repo change, check:
+Run before every pull request or handoff:
 
-1. README links still resolve.
-2. Template names match artifact names or clearly state aliases.
-3. Root skill and child skills do not contradict each other.
-4. New behavior has a clear use condition and stop condition.
-5. The change reduces ambiguity for the next operator or coding agent.
+```bash
+python tools/validate_repo.py
+python -m unittest discover -s tests -v
+```
 
-If validation cannot be run through a local tool, state what was manually inspected.
+The validator checks:
+
+- artifact-contract shape
+- template required-field drift
+- required template sections and markers
+- strict example coverage
+- compatibility aliases
+- source-of-truth and gate references
+- case manifests and artifact paths
+- relative Markdown links
+- repository path references
+
+A manual inspection can supplement these commands. It cannot replace a failing automated check.
+
+## Pull Request Checklist
+
+Before finishing a change, verify:
+
+1. the change has a clear use condition and stop condition
+2. root and child Skills agree
+3. canonical templates and machine contracts agree
+4. strict examples still satisfy their contract
+5. new field practices route into production, eval, incident, or product-learning controls
+6. public examples contain no private customer information
+7. validation and unit tests pass
+8. the PR states what was tested and what remains unproven
