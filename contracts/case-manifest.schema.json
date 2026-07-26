@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dlxeva/fde-operator-os/contracts/case-manifest.schema.json",
+  "title": "FDE Operator OS Case Manifest",
+  "type": "object",
+  "required": ["case_id", "synthetic", "artifacts", "gates"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "case_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "artifacts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["pass", "conditional", "fail", "hold", "not-run"]
+      }
+    },
+    "notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
