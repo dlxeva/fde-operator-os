@@ -78,11 +78,13 @@ The root skill is the canonical doctrine and router. Lighter skills handle commo
 
 ## Artifact System
 
-The repository now treats artifact quality as an enforceable contract.
+The repository treats stage and artifact quality as enforceable contracts.
 
-- [`contracts/artifacts.json`](./contracts/artifacts.json) is the machine-readable source for artifact names, required fields, stages, gates, aliases, strict examples, and cross-artifact sources of truth.
+- [`contracts/stages.json`](./contracts/stages.json) is the canonical registry for the seven stage numbers, IDs, display names, and exit gates.
+- [`contracts/artifacts.json`](./contracts/artifacts.json) defines artifact names, required fields, artifact-stage references, gates, compatibility aliases, strict examples, and cross-artifact sources of truth.
 - [`contracts/case-manifest.schema.json`](./contracts/case-manifest.schema.json) defines the index format for example and benchmark cases.
 - [`tools/validate_repo.py`](./tools/validate_repo.py) detects template drift, missing example fields, broken links, invalid aliases, unknown gate references, and incomplete case manifests.
+- [`tests/test_stage_contract.py`](./tests/test_stage_contract.py) blocks drift between the stage registry, root Skill, README, artifact references, and gate references.
 - [`.github/workflows/validate.yml`](./.github/workflows/validate.yml) runs validation and unit tests on pushes and pull requests.
 
 Run the full local check:
@@ -172,10 +174,10 @@ fde-operator-os/
 ├── skills/                   # focused execution skills
 ├── references/               # doctrine, heuristics, practice system, failures
 ├── assets/templates/         # operator and control artifacts
-├── contracts/                # machine-readable artifact and case contracts
+├── contracts/                # stage, artifact, gate, and case contracts
 ├── examples/                 # synthetic cases and regression examples
 ├── tools/                    # repository validator
-├── tests/                    # validator tests
+├── tests/                    # validator and contract tests
 ├── .github/workflows/        # CI validation
 ├── aliases/                  # runtime wrappers
 └── agents/                   # host-facing metadata
@@ -194,7 +196,7 @@ fde-operator-os/
 
 ## Status
 
-The core doctrine remains stable. The repository is actively refined through Applied AI and FDE delivery practice, with validation intended to keep templates, skills, examples, and documentation aligned as the method evolves.
+The core doctrine remains stable. The repository is actively refined through Applied AI and FDE delivery practice, with validation intended to keep contracts, templates, skills, examples, and documentation aligned as the method evolves.
 
 ## License
 
