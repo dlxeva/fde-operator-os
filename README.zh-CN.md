@@ -85,11 +85,18 @@ Use $fde-operator-os。
 - [`tools/validate_repo.py`](./tools/validate_repo.py)：检查模板漂移、示例缺字段、失效链接、别名重复、未知 Gate 引用和案例清单
 - [`.github/workflows/validate.yml`](./.github/workflows/validate.yml)：在 push 与 pull request 中运行验证和单元测试
 
-本地执行：
+执行完整本地验收：
+
+```bash
+make check
+```
+
+等价的直接命令：
 
 ```bash
 python tools/validate_repo.py
 python -m unittest discover -s tests -v
+python -m compileall -q tools tests
 ```
 
 验证器只使用 Python 标准库。
@@ -161,6 +168,7 @@ Use deployment-readiness to make a go, conditional-go, or no-go launch decision.
 ```text
 fde-operator-os/
 ├── SKILL.md                  # 统一 doctrine 与路由
+├── Makefile                  # 本地验收入口
 ├── skills/                   # 轻量执行 Skill
 ├── references/               # 方法论、启发式、失败模式
 ├── assets/templates/         # operator 与控制工件
