@@ -1,29 +1,44 @@
 # POC Acceptance Contract
 
-- **POC objective**: Prove that one exception category can move through a faster and more auditable review-to-resolution loop without removing human approval
+- **POC objective**: Prove that one exception category can move through a faster and more auditable review-to-resolution loop while human approval remains mandatory.
+- **Baseline**:
+  - measure current review-to-task time on at least 50 historical or live cases
+  - measure intake completeness, evidence acceptance, overdue reconciliation effort, and coordinator disagreement rate
+  - record the share of eligible cases handled first through chat or private spreadsheets
 - **Success criteria**:
-  - coordinators accept or lightly edit the AI draft on most in-scope cases
-  - review-to-task time improves materially versus baseline
-  - closure records include acceptable evidence at a higher rate than baseline
-  - overdue items become visible without reliance on a private spreadsheet
+  - median review-to-task time improves by at least 30% against the measured baseline
+  - at least 80% of eligible pilot submissions enter the review queue by week two
+  - coordinators accept or lightly edit the AI draft on at least 75% of in-scope cases
+  - closure records with acceptable evidence reach at least 90%
+  - overdue items remain visible without private spreadsheet reconciliation for pilot cases
 - **Failure criteria**:
-  - coordinators do not trust the draft enough to use it
-  - task creation still requires the same manual effort as before
-  - evidence quality does not improve
-  - operational exceptions overwhelm the narrow pilot
+  - any critical demo-killing case creates or closes a task without required human approval
+  - coordinators bypass the queue for more than 40% of eligible cases after week two
+  - review-to-task effort remains within 10% of baseline
+  - evidence quality fails to improve materially
+  - audit fields or source evidence are missing from more than 2% of pilot actions
+- **Measurement window**: Four weeks after a one-week calibration period, targeting 100-200 eligible submissions.
 - **Demo path**:
-  1. Show an in-scope submission
-  2. Show AI disposition and rationale
-  3. Show coordinator approval and task creation
-  4. Show closure evidence review
-  5. Show resulting audit trail and overdue visibility
+  1. Show a clear in-scope submission.
+  2. Show an ambiguous submission routed for human review.
+  3. Show coordinator approval, edit, rejection, and task creation.
+  4. Show closure evidence review.
+  5. Show audit trail, overdue visibility, and rollback to manual handling.
+- **Eval pack link**: [`07-eval-cases.md`](./07-eval-cases.md), expanded into the standard Eval Pack format before launch review.
 - **Required evidence**:
-  - baseline and pilot timing comparison
-  - sample accepted and rejected drafts
+  - measured baseline and pilot timing comparison
+  - accepted, edited, rejected, uncertain, and demo-killing cases
   - evidence-quality comparison before and after
-  - example audit record
+  - operator adoption and bypass data
+  - sample audit records and failure traces
+  - weekly regression results
+- **Review cadence**: Weekly pilot review; immediate review after any critical failure or rollback trigger.
+- **Rollback condition**: Pause AI drafting and return to the manual path when a critical unauthorized action occurs, audit integrity fails, or two critical eval failures appear in one weekly run.
+- **Required reviewer**: Regional operations coordinator, technical evaluation owner, and program manager as business acceptance owner.
+- **Decision gate**: G2 passes after baseline, representative eval coverage, acceptance thresholds, authority, audit, and rollback are locked. G3 remains pending until Production Readiness Review.
 - **Known exclusions**:
-  - full multi-category support
-  - autonomous task creation without review
+  - multi-category support
+  - autonomous task creation
   - enterprise reporting redesign
-- **Decision after review**: Expand only if the pilot proves repeatable trust, measurable time savings, and better closure evidence
+  - expansion beyond the pilot coordinator cohort
+- **Decision after review**: Proceed to Production Readiness Review only when repeatable trust, measurable time savings, adoption, evidence quality, audit integrity, and regression stability meet the thresholds above.
