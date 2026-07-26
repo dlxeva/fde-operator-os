@@ -1,73 +1,9 @@
-# State, Action & Evidence Model
+# Ontology & Action Model — Compatibility Alias
 
-Alias: `Ontology & Action Model`
+This legacy path remains for runtime and document compatibility.
 
-## Use
+Canonical artifact:
 
-Use when turning the business world into a run-capable system definition.
+- `assets/templates/state-action-evidence-model.md`
 
-## Required Fields
-
-- Objects
-- Relationships
-- States
-- Actions
-- Rules
-- Events / triggers
-- Permissions / authorities
-- Evidence for state change
-
-## Optional Fields
-
-- Confidence fields
-- Rollback rules
-- Derived entities
-
-## Typical Anti-Pattern
-
-The artifact lists entities and categories but does not define actions, ownership, or proof of transition.
-
-## Completion Standard
-
-A technical team can infer what the system reads, what it can change, and what proof is needed to advance the loop.
-
-## Template
-
-```md
-# State, Action & Evidence Model
-
-## Business Objects
-
-- ...
-
-## Relationships
-
-- ...
-
-## States
-
-- ...
-
-## Actions
-
-- Action:
-  - Owner:
-  - Type: advisory / gated / write
-  - Output:
-
-## Rules
-
-- ...
-
-## Events / Triggers
-
-- ...
-
-## Permissions
-
-- ...
-
-## Evidence For State Change
-
-- ...
-```
+Load and edit the canonical file. Do not duplicate required fields or template content here; the repository validator treats the canonical artifact contract as the source of truth.
