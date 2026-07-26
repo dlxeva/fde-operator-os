@@ -41,7 +41,7 @@ class ValidatorUnitTests(unittest.TestCase):
                 ["missing contracts/artifacts.json"],
             )
 
-    def test_pass_gate_requires_all_declared_artifacts(self) -> None:
+    def test_go_gate_requires_all_declared_artifacts(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             contract = self._write_case_fixture(
@@ -51,7 +51,7 @@ class ValidatorUnitTests(unittest.TestCase):
                     "case_id": "missing-gate-artifact",
                     "synthetic": True,
                     "artifacts": {},
-                    "gates": {"G0": "pass"},
+                    "gates": {"G0": "go"},
                 },
             )
 
@@ -59,7 +59,7 @@ class ValidatorUnitTests(unittest.TestCase):
 
             self.assertTrue(
                 any(
-                    "gate 'G0' is pass but missing required artifacts: mission-brief"
+                    "gate 'G0' is go but missing required artifacts: mission-brief"
                     in issue
                     for issue in issues
                 ),
