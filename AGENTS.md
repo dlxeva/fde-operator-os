@@ -87,7 +87,7 @@ When adding or changing a case:
 1. Keep the case synthetic, public, or explicitly sanitized.
 2. Add or update `case-manifest.json`.
 3. Keep artifact IDs aligned with `contracts/artifacts.json`.
-4. Record gate posture honestly: `pass`, `conditional`, `fail`, `hold`, or `not-run`.
+4. Record gate posture honestly: `go`, `conditional-go`, `no-go`, `hold`, or `not-run`.
 5. Run the validator and tests.
 
 ## Canonical Paths And Compatibility
@@ -126,6 +126,7 @@ Examples:
 
 - operating owner -> Day-2 Operations Plan
 - rollback condition -> POC Acceptance Contract
+- operator adoption signal -> Day-2 Operations Plan
 - AI authority level -> Governance And Risk Overlay
 - production launch decision -> Production Readiness Review
 - field constraint and destination -> Field Signal Log
@@ -140,7 +141,7 @@ A shipped case must be:
 - separated from core doctrine
 - useful for teaching or regression validation
 - indexed through `case-manifest.json`
-- explicit about which gates are proven, conditional, failed, held, or unrun
+- explicit about which gates are go, conditional-go, no-go, held, or unrun
 
 One case can stress the method. It cannot redefine the cross-industry doctrine by itself.
 
@@ -161,7 +162,8 @@ The validator checks:
 - strict example coverage
 - compatibility aliases
 - source-of-truth and gate references
-- case manifests and artifact paths
+- case-manifest schema drift
+- case gate completeness and artifact paths
 - relative Markdown links
 - repository path references
 
