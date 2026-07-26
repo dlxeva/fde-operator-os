@@ -34,7 +34,7 @@
   "$defs": {
     "gateStatus": {
       "type": "string",
-      "enum": ["pass", "conditional", "fail", "hold", "not-run"]
+      "enum": ["go", "conditional-go", "no-go", "hold", "not-run"]
     }
   },
   "additionalProperties": false
