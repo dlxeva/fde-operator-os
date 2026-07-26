@@ -15,9 +15,19 @@ Use after a pilot or delivery loop has produced enough evidence to promote reusa
 - Owner
 - Next maintenance action
 
-## Promotion Standard
+## Optional Fields
 
-An entry is complete only if another operator could reuse the asset without needing the original project operator to explain it live.
+- First reuse opportunity
+- Destination
+- Generalization work
+
+## Typical Anti-Pattern
+
+Project lessons stay inside narrative debriefs and require the original operator to explain them live.
+
+## Completion Standard
+
+Another operator can reuse the promoted asset without the original project operator present.
 
 ## Template
 
@@ -42,8 +52,5 @@ An entry is complete only if another operator could reuse the asset without need
   - Owner:
   - Destination:
   - First reuse opportunity:
-
-## Open Questions
-
-- ...
+  - Next maintenance action:
 ```
