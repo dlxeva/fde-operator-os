@@ -15,14 +15,14 @@
     "asset-distillation-log": "09-asset-distillation-log.md"
   },
   "gates": {
-    "G0": "pass",
-    "G1": "conditional",
-    "G2": "conditional",
-    "G3": "conditional",
+    "G0": "go",
+    "G1": "conditional-go",
+    "G2": "conditional-go",
+    "G3": "conditional-go",
     "G4": "hold"
   },
   "notes": [
     "This is a synthetic case used for teaching and repository regression validation.",
-    "G1, G2, and G3 remain conditional because real operational and production evidence are intentionally unavailable in a synthetic case."
+    "G1, G2, and G3 remain conditional-go because real operational and production evidence are intentionally unavailable in a synthetic case."
   ]
 }
