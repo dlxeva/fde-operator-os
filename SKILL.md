@@ -1,513 +1,434 @@
 ---
 name: fde-operator-os
-description: Applied AI operator playbook for delivery leads who need to qualify an AI opportunity, turn messy operational reality into a structured business system, design a minimum viable loop, and define a delivery-ready expansion path. Use when the user needs full-cycle FDE judgment, operator-grade artifacts, state-action-evidence framing, pilot design, or a cross-industry method for taking an AI use case from opportunity to closed-loop delivery.
+description: Applied AI operator system for delivery leads who need to qualify an AI opportunity, reconstruct operational reality, design a minimum viable loop, pass production-readiness gates, and return field learning into reusable delivery and product assets. Use for full-cycle FDE judgment, state-action-evidence framing, pilot contracts, production adoption, deployment rescue, and cross-industry closed-loop delivery.
 ---
 
 # Applied AI Operator OS
 
-## Canonical Name And Aliases
+## Role
+
+Use this skill as the canonical doctrine and router for Forward Deployed Engineering and Applied AI delivery.
+
+The operating role connects four worlds:
+
+1. customer mission and workflow reality
+2. system design and implementation constraints
+3. production operation and reliability
+4. reusable product, platform, eval, and delivery assets
+
+The output standard is an evidenced, owned, judgeable operator loop. Route pure implementation, generic workshops, vendor comparison, or context-free industry research elsewhere.
+
+## Canonical Name And Paths
 
 Canonical skill name:
 
 - `fde-operator-os`
 
-Recommended short aliases:
+Recommended aliases:
 
 - `fde`
 - `applied`
 
-Important:
+Relative paths start from the folder containing this `SKILL.md`.
 
-- The canonical workflow and artifacts remain the same under all names.
-- Slash-command behavior such as `/FDE` depends on the host runtime.
-- If a runtime does not support aliases natively, keep `fde-operator-os` as the canonical package name and add local wrappers or prompt aliases in that host.
+- **Codex / Claude Code / similar hosts**: read paths relative to the skill root.
+- **Hermes**: use `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`.
+- **Other runtimes**: expose the root skill or selected child skills; see `references/runtime-portability.md`.
 
-## Template Path Resolution
+Host-specific slash commands belong in wrappers under `aliases/`.
 
-Template and reference paths in this skill are written as relative paths from the skill root (for example `assets/templates/mission-brief.md`). Treat them as relative to the folder containing this `SKILL.md`.
+## Router
 
-**Codex**: older Codex variants used a `${CLAUDE_SKILL_DIR}` prefix; prepend your runtime's skill-dir variable if relative paths do not resolve.
+Classify the request before loading the full method.
 
-**Hermes**: Load templates via `skill_view(name='fde-operator-os', file_path='assets/templates/mission-brief.md')`. The first `skill_view()` call returns a `linked_files` dict showing all available references, assets, and templates.
+| Dominant request shape | Route |
+|---|---|
+| opportunity qualification or early go / no-go | `mission-qualifier` |
+| workflow reconstruction, evidence collection, or exception replay | `reality-capture` |
+| bounded pilot, acceptance contract, or eval design | `pilot-designer` |
+| launch review, production adoption, day-2 risk, or deployment rescue | `deployment-readiness` |
+| multi-stage or full-cycle operator work | root `fde-operator-os` |
 
-**Other runtimes**: Treat `assets/templates/` and `references/` as relative paths from the skill root. Browse the directory to find files.
-
-## Role
-
-Use this skill as an operator doctrine for senior FDE, applied AI, and delivery leads.
-
-This is not a generic workshop template and not a field-notes checklist. It is a decision system for turning a customer problem into a delivery-worthy AI operating loop.
-
-FDE here is not on-site outsourcing. It is the operating role that turns field ambiguity into reusable delivery and product capability.
-
-## Router Behavior
-
-This core skill is the canonical doctrine and routing surface.
-
-Default behavior:
-
-- classify the request shape first
-- route to a lighter leaf skill when one request shape dominates
-- run the full end-to-end doctrine directly only when the user explicitly asks for full-cycle operator work or when the problem truly spans multiple shapes
-
-Preferred request-shape routing:
-
-- qualification-heavy requests -> `mission-qualifier`
-- reality and workflow reconstruction -> `reality-capture`
-- bounded pilot compression -> `pilot-designer`
-
-The router should avoid expanding into the full seven-stage workflow when a lighter skill can solve the request with less context and less process overhead.
+Use the lightest skill that can make the required decision. Return to the root method when the request crosses multiple gates.
 
 ## Default Stance
 
 1. Qualify before designing.
-2. Model the real operating system, not the narrated process.
-3. Solve for closed-loop outcomes, not feature demos.
-4. Keep AI on the narrowest surface that creates measurable value.
-5. Treat human trust, governance, and operating ownership as first-class design inputs.
-6. Every delivery should leave behind at least one reusable asset.
-7. If the account context is broad, pick one operator loop before summarizing the whole project.
+2. Model observed work, shadow workflows, and exception paths.
+3. Solve for a closed-loop outcome with a named operator.
+4. Keep AI on the narrowest surface that changes measurable value.
+5. Define action, authority, evidence, audit, containment, fallback, and rollback together.
+6. Treat operator adoption and workflow impact as delivery outcomes.
+7. Treat evals, production traces, incidents, and regression cases as one quality system.
+8. Make every gate decision explicit: `go`, `conditional-go`, or `no-go`.
+9. Make every credible delivery leave reusable capability behind.
 
-Read `references/doctrine.md` first when the request is broad, strategic, or politically messy.
+Read `references/doctrine.md` for the shared principles and `references/fde-practice-system.md` for the production-grade operating model.
+
+## Four Concurrent Control Loops
+
+Run the seven delivery stages through four control loops:
+
+1. **Customer value** — mission fit -> operator adoption -> measurable workflow impact.
+2. **System quality** — real cases -> eval tasks -> regression gates -> production traces.
+3. **Production reliability** — readiness review -> telemetry -> incident response -> postmortem and hardening.
+4. **Product learning** — field signal -> constraint classification -> reusable asset or roadmap decision.
+
+The delivery stages sequence work. The control loops prevent local progress from hiding quality, adoption, reliability, or learning failures.
+
+## Five Gates
+
+| Gate | Decision | Required evidence |
+|---|---|---|
+| G0 Mission Fit | Is this worth committing to? | named operator, consequence, observable outcome, blocking constraints |
+| G1 Evidence Sufficiency | Do we understand the real loop? | real case replays, measured baseline, source artifacts, owners, explicit gaps |
+| G2 Pilot Contract | Can a bounded pilot prove or disprove value? | minimum loop, representative evals, acceptance, authority, fallback, rollback |
+| G3 Production Readiness | Can the loop enter live work with controlled risk? | owner, adoption plan, regression gate, observability, incident response, containment, support |
+| G4 Replication And Asset Promotion | Should this repeat, expand, or become reusable capability? | repeatable impact, stable operating burden, known risks, reusable evidence |
+
+Use the machine-readable definitions in `contracts/artifacts.json` as the artifact and gate source of truth.
 
 ## First-Run Mode
 
-Use this mode when the user is trying the skill for the first time, or when the workspace contains broad strategy, sales, or project-management material that could drown the core FDE loop.
+Use this mode when the input contains broad account, sales, strategy, or project material.
 
-Rules:
+1. Choose one operator.
+2. Choose one business object.
+3. Choose one trigger.
+4. Choose one output.
+5. State the out-of-scope boundary.
+6. Run Stage 2 through Stage 5 on that bounded loop.
+7. Stop before Delivery Architecture while evidence remains thin.
 
-1. Choose **one operator, one object, one trigger, and one output loop** before reading the whole account.
-2. Prefer running **Stage 2 -> Stage 5 + POC Acceptance Contract** on that bounded loop.
-3. Explicitly list what is **out of scope** for this run.
-4. Stop before Delivery Architecture if operational evidence is still thin.
-5. Treat broad project summaries as background only; the main output should be loop-operable artifacts.
+The default first-run deliverables are:
 
-This mode exists to prevent first-time use from collapsing into generic account strategy or project recap.
+- Mission Brief
+- Operational Reality Map
+- System Problem Frame
+- State, Action & Evidence Model
+- AI Intervention Design
+- Minimum Viable Loop
+- POC Acceptance Contract
+- Eval Pack
 
-## Engagement Modes
+## Stage Execution Protocol
 
-Use `references/engagement-modes.md` to adapt the doctrine to different field situations without forcing every request through the deepest possible output.
-
-Default modes:
-
-- Discovery Sprint
-- Pilot Design
-- Deployment Rescue
-- Post-Delivery Asset Distillation
-
-The mode changes where you start, what depth is required, and where you should stop. It does not change the core doctrine.
-
-## When To Use
-
-Use this skill when the user needs any of the following:
-
-- decide whether an industry or customer problem is worth an AI engagement
-- turn a messy business situation into a structured system definition
-- define the full-cycle FDE path from discovery to pilot to delivery
-- design business objects, workflow, action surfaces, and human-in-the-loop boundaries
-- compress a broad opportunity into a minimum viable loop or POC
-- create operator-grade artifacts that another engineer or delivery lead can continue from
-
-Typical trigger requests:
-
-- "这个场景值不值得做 AI 交付"
-- "帮我把这个行业问题拆成可落地系统"
-- "梳理 FDE 全周期方法和交付工件"
-- "先别做方案，先判断该不该做、先做哪段"
-- "把 demo 压成一个能验收的最小闭环"
-
-Do not use this skill for:
-
-- pure vendor selection
-- pure coding implementation without upstream delivery framing
-- a one-off meeting summary that does not need system design
-- industry knowledge lookup with no delivery decision attached
-
-## FDE Boundary Discipline
-
-Keep the output inside the FDE lane unless the user explicitly asks for broader account work.
-
-Default exclusions:
-
-- pricing and packaging debate
-- relationship mapping that does not affect loop ownership
-- generic project status reporting
-- broad leadership narrative with no effect on operator, authority, evidence, or acceptance
-
-If those topics do affect viability, mention them only as constraints on the loop, not as the center of the artifact set.
-
-## Operating Loop
-
-Run the seven stages in order unless the user explicitly enters with a later-stage artifact already in hand.
-
-For every stage, produce:
+For each stage, record:
 
 - judgment questions
-- entry conditions
-- evidence you must not skip
-- standard outputs
-- failure signals
-- exit condition to the next stage
+- entry evidence
+- required artifacts
+- unknowns and blockers
+- exit or gate posture
+- owner and next proof
+- failure signals that require returning upstream
 
-If the user asks for speed, compress depth, not structure. Keep the stage order.
+When speed matters, compress depth and preserve the decision sequence.
 
 ## Stage 1: Mission Qualification
 
-Goal: decide whether the opportunity is worth committing to.
+**Goal:** decide whether the opportunity deserves delivery effort.
 
 Answer:
 
-- What problem class is this really in: perception, decision support, workflow orchestration, or closed-loop operations?
-- Is the value density high enough to justify delivery effort?
-- Is there a measurable operational outcome, not just executive curiosity?
-- Are data, ownership, and organizational conditions minimally viable?
-- What would make this a no-go or not-now?
+- What recurring operational pain carries measurable consequence?
+- Who owns the outcome and who performs the work?
+- What proof can be collected in a bounded time window?
+- Which constraint could force `no-go` or `conditional-go`?
 
-Do not skip:
+Required evidence:
 
-- business pain with consequence
-- named operator or accountable owner
-- success condition with observable proof
-- blocking constraints such as policy, access, latency, or missing authority
+- operational pain and consequence
+- accountable owner
+- observable success metric
+- critical constraints and verification path
 
-Output artifact:
+Artifact:
 
 - `assets/templates/mission-brief.md`
 
-Exit when:
-
-- there is a clear mission statement, success test, and go/no-go posture
+Exit through G0 when the mission, proof path, and posture are explicit.
 
 Failure signals:
 
-- "we want to explore AI" with no operational target
-- no accountable operator
-- no plausible proof path inside 30-90 days
+- executive curiosity with no operating target
+- no accountable owner
+- no plausible baseline or proof path
 
 ## Stage 2: Operational Reality Capture
 
-Goal: capture how work actually moves today.
+**Goal:** reconstruct how work moves today.
 
-Answer:
+Capture:
 
-- Who detects, decides, acts, approves, and bears risk?
-- What does the real workflow look like, including exceptions and workarounds?
-- Which systems, files, channels, and manual steps are in the loop?
-- What evidence exists: logs, forms, SOPs, screenshots, tickets, photos, spreadsheets, transcripts?
-- Where do trust, delay, rework, or responsibility break down?
+- actors and responsibility transfers
+- official workflow and shadow workflow
+- systems, files, channels, and manual steps
+- clean, ugly, disputed, and handoff-failure cases
+- evidence available at each decision point
+- measured baseline, reviewer capacity, and open gaps
 
-Do not skip:
-
-- exception paths
-- one clean case replay
-- one ugly case replay
-- shadow workflows outside the official system
-- sample artifacts from the current process
-- failure cases and disputed cases
-
-Output artifact:
+Artifacts:
 
 - `assets/templates/operational-reality-map.md`
-- `assets/templates/case-replay-pack.md` as a supporting artifact when concrete or disputed cases are available
-- `assets/templates/reality-capture-gating.md` as a living checklist opened here and kept current through Stage 5
+- `assets/templates/case-replay-pack.md`
+- `assets/templates/reality-capture-gating.md`
 
-Read `references/operator-heuristics.md` for reality-capture heuristics when the process is politically filtered or poorly documented.
+Use `references/operator-heuristics.md` when the workflow is politically filtered or poorly documented.
 
-Exit when:
-
-- you can reconstruct the current operating loop without relying on stakeholder rhetoric
-- the Reality Capture Gate is open with every field either backed by real evidence or explicitly carried as an open gating item
+Exit through G1 when another operator can replay the real loop and the Reality Capture Gate states which evidence is collected, inferred, or blocking.
 
 Failure signals:
 
-- only ideal-state process maps
-- no concrete examples
-- no understanding of where responsibility transfers
+- ideal-state process only
+- narrative without source artifacts
+- unnamed responsibility transfers
+- estimated baseline presented as measured fact
 
 ## Stage 3: System Framing
 
-Goal: define the actual system problem.
+**Goal:** define the bounded system problem and binding constraint.
 
 Answer:
 
-- What is the system boundary?
-- Which subproblem matters most right now?
-- Is the bottleneck sensing, interpretation, routing, execution, verification, or governance?
-- What north-star outcome should the system optimize for?
-- Which assumptions, if false, collapse the project?
+- What is inside the system boundary?
+- Which bottleneck matters now: sensing, interpretation, routing, execution, verification, or governance?
+- Which adjacent requests remain deferred?
+- Which assumption could invalidate the plan?
+- Is the binding constraint product, model/eval, data, integration, policy, change management, delivery execution, or operating model?
 
-Do not skip:
-
-- problem decomposition
-- explicit non-goals
-- constraints that shape architecture
-- assumptions that require validation
-
-Output artifact:
+Artifact:
 
 - `assets/templates/system-problem-frame.md`
 
-Exit when:
-
-- the team can say what problem is being solved and what problem is intentionally deferred
+Exit when the team can state the bottleneck, boundary, non-goals, and invalidating assumptions.
 
 Failure signals:
 
-- the system is trying to solve every stakeholder request at once
-- the problem statement is really a tool wishlist
+- feature wishlist presented as a problem frame
+- multiple bottlenecks bundled into the first loop
+- local delivery friction routed directly into product scope without classification
 
 ## Stage 4: State, Action & Evidence Model
 
-Goal: translate the business world into an AI-operable system.
+**Goal:** translate the business world into a run-capable control model.
 
-Answer:
+Define:
 
-- What are the key business objects, relationships, states, actions, rules, events, and permissions?
-- Which actions are write-capable versus advisory only?
-- Which states require human confirmation?
-- What evidence moves an item from one state to another?
+- business objects and relationships
+- states and valid transitions
+- events and triggers
+- actions and owners
+- advisory, gated, and write authority
+- evidence required for state change
+- audit, containment, and rollback rules
 
-Do not skip:
+Canonical artifact:
 
-- state transitions
-- write permissions
-- event triggers
-- ambiguous or disputed entities
+- `assets/templates/state-action-evidence-model.md`
 
-Output artifact:
+Compatibility path:
 
 - `assets/templates/ontology-action-model.md`
 
-Read `references/doctrine.md` again if the team drifts into feature-thinking instead of system-thinking.
-
-Exit when:
-
-- the business loop can be described as objects plus actions plus proof of transition
+Exit when a technical team can infer what the system reads, decides, changes, proves, and reverses.
 
 Failure signals:
 
-- ontology contains nouns only and no action surface
-- actions exist with no owner or evidence requirement
+- nouns without state consequence
+- actions without authority or owner
+- state changes without evidence or audit
 
-## Stage 5: Intervention & Pilot Design
+## Stage 5: Intervention And Pilot Design
 
-Goal: choose the minimum AI surface that changes the outcome.
+**Goal:** choose the smallest AI surface that can prove or disprove value.
 
-Answer:
+Define:
 
-- Where should AI intervene: detect, classify, summarize, recommend, route, verify, or act?
-- What must remain human-owned?
-- What is the minimum viable loop that proves value?
-- What are the critical failure modes and demo-killing edge cases?
+- target bottleneck and AI role
+- human confirmation boundary
+- baseline manual path
+- trigger, transformation, action, output, verification, and audit
+- golden, failure, edge, ambiguous, and demo-killing eval cases
+- graders, thresholds, measurement window, and regression check
+- fallback and rollback conditions
+- operator adoption signal
 
-Do not skip:
-
-- false-positive and false-negative consequences
-- fallback path when AI is wrong or uncertain
-- scope cuts that keep the pilot honest
-
-Output artifacts:
+Artifacts:
 
 - `assets/templates/ai-intervention-design.md`
 - `assets/templates/minimum-viable-loop.md`
-- `assets/templates/eval-pack.md` as a required support artifact for credible pilots
+- `assets/templates/poc-acceptance-contract.md`
+- `assets/templates/eval-pack.md`
+- `assets/templates/governance-and-risk-overlay.md` when AI influences operational action
 
-Exit when:
+Exit through G2 when an independent reviewer can judge the pilot without renegotiating scope or success.
 
-- one narrow loop is defined with concrete inputs, outputs, and proof
-
-Failure signals:
-
-- pilot scope requires full enterprise integration to show value
-- AI is inserted because it is impressive, not because it removes a bottleneck
-
-## Stage 6: Delivery Architecture
-
-Goal: define how the loop runs in the real world.
-
-Entry gate — do not start this stage until the Reality Capture Gate reads evidence-sufficient, or partial with the inferred sections explicitly flagged. If the gate is thin (most fields inferred or narrative-only), stay in Stage 2-5, name the gaps in the gate, and re-collect. Architecture built on inferred reality has to be rebuilt later.
-
-Minimum evidence to enter Stage 6:
-
-- at least one real clean case and one real ugly case collected (not inferred)
-- the operating owner and exception owner named (not just a role)
-- the current cycle time measured, not estimated
-- the knowledge base that the loop depends on structured and loaded, or its absence named as a blocking gating item
-
-Answer:
-
-- What systems must be read from or written to?
-- What interface will operators actually use?
-- What telemetry, audit, and governance are required?
-- Who owns day-2 operations and exception handling?
-
-Do not skip:
-
-- source-of-truth systems
-- write-back rules
-- observability and audit trail
-- operating owner after launch
-
-Output addition:
-
-- add delivery architecture details into `assets/templates/minimum-viable-loop.md`
-- lock acceptance expectations in `assets/templates/poc-acceptance-contract.md`
-- define trust, permissions, and rollback in `assets/templates/governance-and-risk-overlay.md`
-- define support, monitoring, and exception ownership in `assets/templates/day-2-operations-plan.md`
-
-Read `references/failure-patterns.md` before finalizing architecture in regulated or high-accountability domains.
-
-Exit when:
-
-- the loop can be explained as a runbook, not just a demo
+Handoff to `deployment-readiness` after the pilot contract, representative evals, authority, audit, adoption signal, fallback, rollback, and remaining launch dependencies are explicit.
 
 Failure signals:
 
-- no write-back plan
-- no exception owner
-- no audit path for decisions and actions
+- full enterprise integration required before any proof
+- polished demo cases with no failure taxonomy
+- acceptance defined after build
+- pilot completion treated as launch approval
+
+## Stage 6: Delivery Architecture And Production Readiness
+
+**Goal:** define how the loop enters and survives real operator work.
+
+Entry condition:
+
+- G1 is evidence-sufficient, or partial with every inferred section flagged
+- at least one real clean and ugly case exists
+- operating and exception owners are named
+- current cycle time and volume are measured
+- source-of-truth and knowledge dependencies are known
+
+Decide:
+
+- read and write integrations
+- operator interface and target cohort
+- service and workflow objectives
+- versioned eval baseline and regression gate
+- telemetry, traces, audit, and production sampling
+- incident triggers and severity model
+- containment boundary
+- support, escalation, fallback, and rollback
+- training, runbook, capacity, and cost guardrails
+- field-signal destination
+
+Artifacts:
+
+- `assets/templates/day-2-operations-plan.md`
+- `assets/templates/governance-and-risk-overlay.md`
+- `assets/templates/production-readiness-review.md`
+- `assets/templates/field-signal-log.md`
+
+Use `references/failure-patterns.md` before a high-accountability launch.
+
+Exit through G3 with an explicit `go`, `conditional-go`, or `no-go` decision, including blockers, owners, next proof, and re-review triggers.
+
+Failure signals:
+
+- no production owner or exception owner
+- missing operator adoption plan
+- no regression or production trace path
+- incident severity negotiated during failure
+- no containment, fallback, or rollback path
 
 ## Stage 7: Expansion Logic
 
-Goal: decide how the pilot becomes a program.
+**Goal:** decide whether the proven loop should repeat or expand.
 
 Answer:
 
-- What has to be true before replication?
-- Which adjacent loops should come next?
-- What platform, data, and org capabilities need to harden?
+- Which outcome and adoption signals are repeatable?
+- What operating burden remains?
+- Which adjacent loop is the safest next step?
+- Which platform, data, governance, or organizational capability must harden first?
 - Which risks grow faster than value?
+- What evidence would force a hold?
 
-Do not skip:
-
-- sequence of expansion
-- dependency map
-- reasons not to scale yet
-- proof required before broad rollout
-
-Output artifact:
+Artifact:
 
 - `assets/templates/expansion-roadmap.md`
 
-Exit when:
+Re-run G3 when authority, volume, integration surface, data sensitivity, or operator cohort changes materially.
 
-- there is a staged path from one loop to a broader operating system
+Exit through G4 when replication conditions, dependencies, risks, stage gates, and hold reasons are explicit.
 
 Failure signals:
 
-- scaling is justified only by leadership enthusiasm
-- pilot success criteria do not map to expansion criteria
+- expansion justified by leadership enthusiasm
+- operating burden hidden by embedded heroics
+- pilot criteria disconnected from replication criteria
 
-## Post-Delivery Overlay: Asset Distillation Loop
+## Post-Delivery Asset Distillation
 
-Goal: convert delivery learning into reusable capability.
+**Goal:** convert field learning into reusable capability.
 
-Run this after a credible loop exists. This is not Stage 8 of delivery design. It is the closeout overlay that prevents the work from collapsing into custom-project labor.
+Run the overlay after credible evidence exists. A prospective pass may mark candidates `hold` while naming what evidence to collect.
 
-Early-stage mode: the overlay can also be run prospectively before a loop is delivered, to identify asset candidates early. In this mode most candidates will be marked `hold` pending POC evidence, which is correct and useful — the value is naming what to watch for and where it should land. At least one candidate should aim for an immediate `promote` decision (for example a reusable data-readiness or reality-capture pattern distilled from the current run), so the early pass still leaves something reusable behind. The standard closeout run later upgrades `hold` candidates to `promote` or `reject` as evidence arrives.
+Capture:
 
-Answer:
+- source case and evidence
+- reusable pattern hypothesis
+- constraint classification
+- asset type and reuse target
+- promotion status: `observe`, `validate`, `promote`, or `reject`
+- destination, owner, next proof, and maintenance action
 
-- What should be promoted from this case into a reusable problem pattern?
-- Which workflow or operating steps are stable enough to become a template?
-- What data-readiness, eval, or governance checks should be reused next time?
-- Which failure cases should become test cases?
-- What should be turned into SOP, skill, internal tool, or product backlog?
-- What is still too project-specific to promote?
-- Which day-2 failures or eval failures should be promoted into reusable checks, cases, or overlays?
+Artifacts:
 
-Do not skip:
-
-- source evidence for each lesson
-- promotion threshold for reusability
-- the difference between project notes and reusable assets
-- explicit owner for maintaining promoted assets
-
-Output artifacts:
-
-- `references/asset-distillation-loop.md`
+- `assets/templates/field-signal-log.md`
 - `assets/templates/asset-distillation-log.md`
+- `references/asset-distillation-loop.md`
 
-Exit when:
-
-- at least one reusable asset is defined with owner, proof, and target reuse context
+Exit when at least one asset or roadmap decision has evidence, owner, destination, and a concrete next reuse context.
 
 Failure signals:
 
-- lessons remain trapped in narrative debriefs
-- project artifacts cannot be reused without the original operator present
-- no feedback path exists from delivery back into product, template, or eval assets
+- lessons trapped in recap narratives
+- every customer request routed into the product backlog
+- assets require the original operator to explain them live
+- no owner or maintenance path
 
-## Artifact Set
+## Artifact Set And Source Of Truth
 
-The core operator artifacts are:
+The 16 governed artifacts and required fields are defined in `contracts/artifacts.json`.
 
-1. `Mission Brief`
-2. `Operational Reality Map`
-3. `System Problem Frame`
-4. `State, Action & Evidence Model`
-5. `AI Intervention Design`
-6. `Minimum Viable Loop`
-7. `POC Acceptance Contract`
-8. `Expansion Roadmap`
+Canonical cross-artifact fields:
 
-Execution-grade support artifacts should also be used when the loop reaches pilot or deployment depth:
+- **Operating owner** — Day-2 Operations Plan
+- **Exception owner** — Day-2 Operations Plan
+- **Rollback condition** — POC Acceptance Contract
+- **Fallback mode** — Minimum Viable Loop
+- **Drift / degradation signal** — Day-2 Operations Plan
+- **Success / failure criteria** — POC Acceptance Contract
+- **AI authority level** — Governance And Risk Overlay
+- **Production launch decision** — Production Readiness Review
+- **Operator adoption signal** — Day-2 Operations Plan
+- **Field constraint and destination** — Field Signal Log
 
-9. `Case Replay Pack`
-10. `Eval Pack`
-11. `Governance And Risk Overlay`
-12. `Day-2 Operations Plan`
+Reference canonical values from other artifacts. When the source artifact is pending, mark the temporary value for later consolidation.
 
-Post-delivery closeout should also produce:
+## Engagement Modes
 
-13. `Asset Distillation Log`
+Use `references/engagement-modes.md` for bounded delivery packages:
 
-Use the templates in `assets/templates/`.
+- Discovery Sprint -> G0 and G1
+- Pilot Design -> G2
+- Production Readiness -> G3
+- Deployment Rescue -> return to the earliest failed gate
+- Post-Delivery Asset Distillation -> G4
 
-Rules:
+## Case Discipline
 
-1. Fill required fields before adding narrative.
-2. Mark unknowns explicitly instead of smoothing them over.
-3. Treat contradictions as design inputs, not cleanup noise.
-4. Do not move forward if the current artifact still contains unowned decisions.
+Keep private customer material outside the shipped skill.
 
-Several fields recur across artifacts (rollback condition, operating owner, fallback mode, drift signal). To avoid drift between copies, define each once in the artifact below and reference it elsewhere rather than re-stating it.
+A public case must be synthetic, public, or explicitly sanitized. Index governed examples through `case-manifest.json`, record gate posture honestly, and keep domain-specific lessons separate from cross-industry doctrine.
 
-Field source-of-truth:
+## Output Standard
 
-- **Operating owner** — Day-2 Operations Plan (referenced by Minimum Viable Loop)
-- **Exception owner** — Day-2 Operations Plan (referenced by Governance And Risk Overlay)
-- **Rollback condition** — POC Acceptance Contract (referenced by Minimum Viable Loop and Governance And Risk Overlay)
-- **Fallback mode** — Minimum Viable Loop (referenced by Day-2 Operations Plan)
-- **Drift / degradation signal** — Day-2 Operations Plan (referenced by Minimum Viable Loop)
-- **Success / failure criteria** — POC Acceptance Contract (referenced by Eval Pack)
-- **AI authority level** — Governance And Risk Overlay (referenced by AI Intervention Design)
+Return operator-grade outputs with:
 
-When an artifact is produced before its source-of-truth artifact exists, fill the field where you are and mark it "to be consolidated into [target artifact] when produced."
+- judgment first
+- evidence and inference separated
+- named unknowns and blockers
+- owner, authority, and next proof
+- explicit gate posture
+- staged action tied to the earliest unresolved constraint
 
-## References
+For early-stage work, stop when the next gate lacks evidence. For late-stage work, backfill the earliest missing upstream artifact before proposing architecture or scale.
 
-- Doctrine: `references/doctrine.md`
-- Heuristics: `references/operator-heuristics.md`
-- Failure patterns: `references/failure-patterns.md`
-- Asset distillation: `references/asset-distillation-loop.md`
-- Engagement modes: `references/engagement-modes.md`
+## Validation
 
-## Case Handling
+Before changing or shipping this skill, run:
 
-Keep domain cases outside the core skill by default.
+```bash
+python tools/validate_repo.py
+python -m unittest discover -s tests -v
+```
 
-If you are validating this skill against a local project, treat that case material as private working context, not as part of the shipped skill. Use local notes or a separate private case pack to stress-test the doctrine, artifacts, heuristics, and asset-distillation outputs.
-
-## Output Style
-
-Return operator-grade outputs:
-
-- concise judgment first
-- evidence versus inference separated
-- explicit risks and unknowns
-- staged next action, not generic recommendations
-
-If the user is early-stage, stop after Mission Qualification or System Framing instead of pretending the later stages are ready.
-
-If the user is late-stage, backfill missing upstream artifacts before proposing architecture or scale.
+Repository editing rules live in `AGENTS.md`.
