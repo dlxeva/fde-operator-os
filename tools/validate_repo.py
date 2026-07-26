@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the repository's artifact contract, templates, examples, and links.
+"""Validate artifact contracts, templates, examples, gates, and repository links.
 
 The validator intentionally uses only the Python standard library so it can run
 in local agent environments and GitHub Actions without dependency setup.
@@ -31,7 +31,20 @@ CASE_MANIFEST_KEYS = {
     "gates",
     "notes",
 }
-ALLOWED_GATE_STATUSES = {"pass", "conditional", "fail", "hold", "not-run"}
+REQUIRED_CASE_MANIFEST_KEYS = {
+    "$schema",
+    "case_id",
+    "synthetic",
+    "artifacts",
+    "gates",
+}
+ALLOWED_GATE_STATUSES = {
+    "go",
+    "conditional-go",
+    "no-go",
+    "hold",
+    "not-run",
+}
 FIELD_RE = re.compile(r"^\s*-\s+(.+?)\s*$")
 HEADING_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
@@ -83,7 +96,12 @@ def _is_placeholder_path(value: str) -> bool:
     return any(token in value for token in ("<", ">", "{", "}", "*", "$"))
 
 
-def _validate_string_list(value: Any, label: str, *, allow_empty: bool = False) -> list[str]:
+def _validate_string_list(
+    value: Any,
+    label: str,
+    *,
+    allow_empty: bool = False,
+) -> list[str]:
     issues: list[str] = []
     if not isinstance(value, list):
         return [f"{label}: must be an array"]
@@ -114,11 +132,15 @@ def _validate_contract_shape(contract: Any) -> list[str]:
     for key in ("contract_version", "description", "case_manifest_schema"):
         value = contract.get(key)
         if not isinstance(value, str) or not value.strip():
-            issues.append(f"contracts/artifacts.json: '{key}' must be a non-empty string")
+            issues.append(
+                f"contracts/artifacts.json: '{key}' must be a non-empty string"
+            )
 
     artifacts = contract.get("artifacts")
     if not isinstance(artifacts, dict) or not artifacts:
-        issues.append("contracts/artifacts.json: 'artifacts' must be a non-empty object")
+        issues.append(
+            "contracts/artifacts.json: 'artifacts' must be a non-empty object"
+        )
         return issues
 
     for artifact_id, artifact in artifacts.items():
@@ -126,8 +148,11 @@ def _validate_contract_shape(contract: Any) -> list[str]:
             issues.append("contract: artifact IDs must be non-empty strings")
             continue
         if not isinstance(artifact, dict):
-            issues.append(f"contract:{artifact_id}: artifact definition must be an object")
+            issues.append(
+                f"contract:{artifact_id}: artifact definition must be an object"
+            )
             continue
+
         for key in (
             "title",
             "stage",
@@ -173,7 +198,9 @@ def _validate_contract_shape(contract: Any) -> list[str]:
 
         strict_examples = artifact.get("strict_examples")
         if not isinstance(strict_examples, list):
-            issues.append(f"contract:{artifact_id}:strict_examples: must be an array")
+            issues.append(
+                f"contract:{artifact_id}:strict_examples: must be an array"
+            )
         else:
             for index, example in enumerate(strict_examples):
                 label = f"contract:{artifact_id}:strict_examples[{index}]"
@@ -212,7 +239,9 @@ def _validate_contract_shape(contract: Any) -> list[str]:
 
     sources = contract.get("source_of_truth")
     if not isinstance(sources, dict) or not sources:
-        issues.append("contracts/artifacts.json: 'source_of_truth' must be a non-empty object")
+        issues.append(
+            "contracts/artifacts.json: 'source_of_truth' must be a non-empty object"
+        )
     else:
         for name, source in sources.items():
             if not isinstance(source, dict):
@@ -232,7 +261,9 @@ def _validate_contract_shape(contract: Any) -> list[str]:
                 continue
             artifact = artifacts.get(artifact_id)
             if artifact is None:
-                issues.append(f"source_of_truth:{name}: unknown artifact '{artifact_id}'")
+                issues.append(
+                    f"source_of_truth:{name}: unknown artifact '{artifact_id}'"
+                )
                 continue
             required_fields = artifact.get("required_fields", [])
             if isinstance(required_fields, list) and normalize_field(field) not in {
@@ -241,12 +272,15 @@ def _validate_contract_shape(contract: Any) -> list[str]:
                 if isinstance(item, str)
             }:
                 issues.append(
-                    f"source_of_truth:{name}: field '{field}' is not required by '{artifact_id}'"
+                    f"source_of_truth:{name}: field '{field}' is not required by "
+                    f"'{artifact_id}'"
                 )
 
     gates = contract.get("gates")
     if not isinstance(gates, list) or not gates:
-        issues.append("contracts/artifacts.json: 'gates' must be a non-empty array")
+        issues.append(
+            "contracts/artifacts.json: 'gates' must be a non-empty array"
+        )
     else:
         seen_gate_ids: set[str] = set()
         for index, gate in enumerate(gates):
@@ -274,7 +308,8 @@ def _validate_contract_shape(contract: Any) -> list[str]:
                 for artifact_id in required_artifacts:
                     if isinstance(artifact_id, str) and artifact_id not in artifacts:
                         issues.append(
-                            f"gate:{gate_id or '<unknown>'}: unknown artifact '{artifact_id}'"
+                            f"gate:{gate_id or '<unknown>'}: unknown artifact "
+                            f"'{artifact_id}'"
                         )
 
     return issues
@@ -295,16 +330,20 @@ def _validate_artifacts(root: Path, contract: dict[str, Any]) -> list[str]:
         for section in REQUIRED_TEMPLATE_SECTIONS:
             if section not in headings:
                 issues.append(
-                    f"artifact:{artifact_id}: template missing '## {section}' in {artifact['template']}"
+                    f"artifact:{artifact_id}: template missing '## {section}' in "
+                    f"{artifact['template']}"
                 )
 
-        actual_fields = [normalize_field(item) for item in extract_required_fields(text)]
+        actual_fields = [
+            normalize_field(item) for item in extract_required_fields(text)
+        ]
         expected_fields = [
             normalize_field(item) for item in artifact["required_fields"]
         ]
         if actual_fields != expected_fields:
             issues.append(
-                f"artifact:{artifact_id}: required fields drift in {artifact['template']}\n"
+                f"artifact:{artifact_id}: required fields drift in "
+                f"{artifact['template']}\n"
                 f"  expected: {artifact['required_fields']}\n"
                 f"  actual:   {extract_required_fields(text)}"
             )
@@ -312,14 +351,16 @@ def _validate_artifacts(root: Path, contract: dict[str, Any]) -> list[str]:
         for marker in artifact["template_markers"]:
             if marker not in text:
                 issues.append(
-                    f"artifact:{artifact_id}: template marker missing in {artifact['template']}: {marker}"
+                    f"artifact:{artifact_id}: template marker missing in "
+                    f"{artifact['template']}: {marker}"
                 )
 
         for example in artifact["strict_examples"]:
             example_path = root / example["path"]
             if not example_path.is_file():
                 issues.append(
-                    f"artifact:{artifact_id}: missing strict example '{example['path']}'"
+                    f"artifact:{artifact_id}: missing strict example "
+                    f"'{example['path']}'"
                 )
                 continue
             example_text = example_path.read_text(encoding="utf-8")
@@ -347,29 +388,90 @@ def _validate_aliases(root: Path, contract: dict[str, Any]) -> list[str]:
         text = alias_path.read_text(encoding="utf-8")
         if alias["canonical"] not in text:
             issues.append(
-                f"alias:{alias['path']}: must point to canonical '{alias['canonical']}'"
+                f"alias:{alias['path']}: must point to canonical "
+                f"'{alias['canonical']}'"
             )
         if "## Required Fields" in text:
             issues.append(
-                f"alias:{alias['path']}: duplicates the artifact contract; keep it as a redirect only"
+                f"alias:{alias['path']}: duplicates the artifact contract; "
+                "keep it as a redirect only"
             )
     return issues
 
 
-def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
+def _validate_case_manifest_schema(
+    schema_path: Path,
+    contract: dict[str, Any],
+) -> list[str]:
+    issues: list[str] = []
+    if not schema_path.is_file():
+        return [
+            f"contract: missing case manifest schema "
+            f"'{contract['case_manifest_schema']}'"
+        ]
+
+    try:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return [f"case-manifest-schema: cannot load schema: {exc}"]
+    if not isinstance(schema, dict):
+        return ["case-manifest-schema: root must be an object"]
+
+    expected_gate_ids = {gate["id"] for gate in contract["gates"]}
+    root_required = set(schema.get("required", []))
+    if root_required != REQUIRED_CASE_MANIFEST_KEYS:
+        issues.append(
+            "case-manifest-schema: root required keys drift; expected "
+            f"{sorted(REQUIRED_CASE_MANIFEST_KEYS)}, got {sorted(root_required)}"
+        )
+
+    gates_schema = schema.get("properties", {}).get("gates", {})
+    if not isinstance(gates_schema, dict):
+        return issues + ["case-manifest-schema: gates definition must be an object"]
+
+    schema_gate_ids = set(gates_schema.get("required", []))
+    if schema_gate_ids != expected_gate_ids:
+        issues.append(
+            "case-manifest-schema: required gate IDs drift; expected "
+            f"{sorted(expected_gate_ids)}, got {sorted(schema_gate_ids)}"
+        )
+
+    gate_properties = gates_schema.get("properties", {})
+    if not isinstance(gate_properties, dict):
+        issues.append(
+            "case-manifest-schema: gate properties must be an object"
+        )
+    elif set(gate_properties) != expected_gate_ids:
+        issues.append(
+            "case-manifest-schema: gate property IDs drift; expected "
+            f"{sorted(expected_gate_ids)}, got {sorted(gate_properties)}"
+        )
+
+    gate_status = schema.get("$defs", {}).get("gateStatus", {})
+    schema_statuses = set(gate_status.get("enum", []))
+    if schema_statuses != ALLOWED_GATE_STATUSES:
+        issues.append(
+            "case-manifest-schema: gate status enum drift; expected "
+            f"{sorted(ALLOWED_GATE_STATUSES)}, got {sorted(schema_statuses)}"
+        )
+
+    return issues
+
+
+def _validate_case_manifests(
+    root: Path,
+    contract: dict[str, Any],
+) -> list[str]:
     issues: list[str] = []
     artifact_ids = set(contract["artifacts"])
     gate_requirements = {
         gate["id"]: set(gate["required_artifacts"])
-        for gate in contract.get("gates", [])
+        for gate in contract["gates"]
     }
     gate_ids = set(gate_requirements)
 
     schema_path = root / contract["case_manifest_schema"]
-    if not schema_path.is_file():
-        issues.append(
-            f"contract: missing case manifest schema '{contract['case_manifest_schema']}'"
-        )
+    issues.extend(_validate_case_manifest_schema(schema_path, contract))
 
     manifest_paths = sorted((root / "examples").glob("**/case-manifest.json"))
     if not manifest_paths:
@@ -389,20 +491,18 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
             issues.append(f"{label}: root must be an object")
             continue
 
-        unknown_keys = sorted(set(manifest) - CASE_MANIFEST_KEYS)
-        for key in unknown_keys:
+        for key in sorted(set(manifest) - CASE_MANIFEST_KEYS):
             issues.append(f"{label}: unknown key '{key}'")
-
-        for key in ("$schema", "case_id", "synthetic", "artifacts", "gates"):
-            if key not in manifest:
-                issues.append(f"{label}: missing key '{key}'")
+        for key in sorted(REQUIRED_CASE_MANIFEST_KEYS - set(manifest)):
+            issues.append(f"{label}: missing key '{key}'")
 
         schema_ref = manifest.get("$schema")
         if isinstance(schema_ref, str) and schema_ref:
             resolved_schema = (manifest_path.parent / schema_ref).resolve()
             if resolved_schema != schema_path.resolve():
                 issues.append(
-                    f"{label}: '$schema' must resolve to '{contract['case_manifest_schema']}'"
+                    f"{label}: '$schema' must resolve to "
+                    f"'{contract['case_manifest_schema']}'"
                 )
         elif "$schema" in manifest:
             issues.append(f"{label}: '$schema' must be a non-empty string")
@@ -410,16 +510,17 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
         case_id = manifest.get("case_id")
         if not isinstance(case_id, str) or not case_id.strip():
             issues.append(f"{label}: 'case_id' must be a non-empty string")
-
         if "title" in manifest and not isinstance(manifest["title"], str):
             issues.append(f"{label}: 'title' must be a string")
-
         if not isinstance(manifest.get("synthetic"), bool):
             issues.append(f"{label}: 'synthetic' must be a boolean")
 
-        notes = manifest.get("notes", [])
         issues.extend(
-            _validate_string_list(notes, f"{label}:notes", allow_empty=True)
+            _validate_string_list(
+                manifest.get("notes", []),
+                f"{label}:notes",
+                allow_empty=True,
+            )
         )
 
         artifacts = manifest.get("artifacts")
@@ -435,7 +536,8 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
                 continue
             if not isinstance(relative_path, str) or not relative_path.strip():
                 issues.append(
-                    f"{label}: artifact path for '{artifact_id}' must be a non-empty string"
+                    f"{label}: artifact path for '{artifact_id}' must be a "
+                    "non-empty string"
                 )
                 continue
             artifact_path = (manifest_path.parent / relative_path).resolve()
@@ -443,20 +545,22 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
                 artifact_path.relative_to(manifest_path.parent.resolve())
             except ValueError:
                 issues.append(
-                    f"{label}: artifact path escapes the case directory: '{relative_path}'"
+                    f"{label}: artifact path escapes the case directory: "
+                    f"'{relative_path}'"
                 )
                 continue
             if not artifact_path.is_file():
                 issues.append(
-                    f"{label}: missing artifact file '{relative_path}' for '{artifact_id}'"
+                    f"{label}: missing artifact file '{relative_path}' for "
+                    f"'{artifact_id}'"
                 )
                 continue
             artifact_text = artifact_path.read_text(encoding="utf-8")
             for marker in contract["artifacts"][artifact_id]["template_markers"]:
                 if marker not in artifact_text:
                     issues.append(
-                        f"{label}: artifact '{relative_path}' is missing contract marker "
-                        f"for '{artifact_id}': {marker}"
+                        f"{label}: artifact '{relative_path}' is missing contract "
+                        f"marker for '{artifact_id}': {marker}"
                     )
 
         gates = manifest.get("gates")
@@ -464,8 +568,7 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
             issues.append(f"{label}: 'gates' must be an object")
             gates = {}
 
-        missing_gate_ids = sorted(gate_ids - set(gates))
-        for gate_id in missing_gate_ids:
+        for gate_id in sorted(gate_ids - set(gates)):
             issues.append(f"{label}: missing gate '{gate_id}'")
 
         for gate_id, status in gates.items():
@@ -477,13 +580,13 @@ def _validate_case_manifests(root: Path, contract: dict[str, Any]) -> list[str]:
                     f"{label}: invalid status '{status}' for '{gate_id}'"
                 )
                 continue
-            if status == "pass":
+            if status == "go":
                 missing_artifacts = sorted(
                     gate_requirements[gate_id] - set(artifacts)
                 )
                 if missing_artifacts:
                     issues.append(
-                        f"{label}: gate '{gate_id}' is pass but missing required "
+                        f"{label}: gate '{gate_id}' is go but missing required "
                         f"artifacts: {', '.join(missing_artifacts)}"
                     )
 
@@ -508,12 +611,14 @@ def _validate_markdown_links(root: Path) -> list[str]:
                 resolved.relative_to(root.resolve())
             except ValueError:
                 issues.append(
-                    f"link:{markdown_path.relative_to(root)}: target escapes repository: {raw_target}"
+                    f"link:{markdown_path.relative_to(root)}: target escapes "
+                    f"repository: {raw_target}"
                 )
                 continue
             if not resolved.exists():
                 issues.append(
-                    f"link:{markdown_path.relative_to(root)}: missing target '{raw_target}'"
+                    f"link:{markdown_path.relative_to(root)}: missing target "
+                    f"'{raw_target}'"
                 )
     return issues
 
@@ -530,7 +635,8 @@ def _validate_repository_path_references(root: Path) -> list[str]:
                 continue
             if not (root / referenced).exists():
                 issues.append(
-                    f"path-ref:{markdown_path.relative_to(root)}: missing repository path '{referenced}'"
+                    f"path-ref:{markdown_path.relative_to(root)}: missing "
+                    f"repository path '{referenced}'"
                 )
     return issues
 
