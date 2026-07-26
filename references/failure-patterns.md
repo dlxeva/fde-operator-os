@@ -1,10 +1,10 @@
 # Failure Patterns
 
-Each pattern below follows a three-step correction structure so the operator can diagnose, recover, and verify — not just recognize the smell:
+Each pattern uses a three-step correction structure:
 
-- **Self-check**: the question that reveals whether you are inside this pattern right now
-- **Recover**: the stage or artifact to return to, and the narrowing move to make
-- **Verify**: the observable signal that confirms the pattern is resolved before moving forward
+- **Self-check** — reveal whether the pattern is active
+- **Recover** — return to the right gate, stage, or artifact
+- **Verify** — confirm the correction through observable proof
 
 ## Pattern 1: AI Theater
 
@@ -12,145 +12,187 @@ Symptoms:
 
 - the team optimizes for executive excitement
 - no operational owner is identified
-- success is defined as "a good demo"
+- success is defined as a good demo
 
 Correction:
 
-- **Self-check**: can you name a single operator whose weekly work changes if this ships, and a measurable failure cost if it does not?
-- **Recover**: return to Stage 1 Mission Qualification. Restate the loop as operator + trigger + measurable outcome. If no operator or failure cost can be named, the correct output is a no-go or not-now, not a smaller pilot.
-- **Verify**: the Mission Brief now names an accountable owner and an observable success metric. A skeptical reviewer would agree this is a real loop, not a showcase.
+- **Self-check**: can you name one operator whose recurring work changes and one measurable consequence if the loop stays unchanged?
+- **Recover**: return to G0 Mission Fit. Restate the opportunity as operator + trigger + measurable outcome. Record `no-go` or `conditional-go` when no owner or proof path exists.
+- **Verify**: the Mission Brief names an accountable owner, baseline, and observable success metric.
 
 ## Pattern 2: Taxonomy Without Control
 
 Symptoms:
 
-- ontology work produces nouns but no state transitions
+- the model contains nouns but no state transitions
 - action permissions are unclear
-- artifacts look complete but no system can run from them
+- artifacts look complete while no system can run from them
 
 Correction:
 
-- **Self-check**: does every object in your model have at least one action with a defined owner, authority level, and evidence requirement for state change?
-- **Recover**: return to Stage 4. For each object, ask what action changes its state, who has authority to take it, and what evidence must accompany the transition. Remove objects that have no action or state consequence.
-- **Verify**: a technical reader can infer what the system reads, what it can change, and what proof advances the loop — without you narrating it.
+- **Self-check**: does every first-loop object have an action, authority level, and evidence requirement for state change?
+- **Recover**: return to Stage 4. Define actions, owners, permissions, audit, evidence, and rollback. Remove objects with no action or state consequence.
+- **Verify**: a technical reader can infer what the system reads, changes, proves, and reverses without live narration.
 
 ## Pattern 3: Idealized Process Capture
 
 Symptoms:
 
 - only official SOPs are documented
-- no exception path, escalation path, or workaround exists in the design
+- exception, escalation, workaround, and shadow paths are missing
 
 Correction:
 
-- **Self-check**: does your reality map contain at least one clean case, one ugly case, and one observed shadow workflow outside the official system?
-- **Recover**: return to Stage 2. Collect ugly cases, disputed cases, and handoff failures explicitly. If stakeholders only describe the ideal path, ask "show me the last time this broke" and trace that case.
-- **Verify**: another operator could replay how the work actually moves without interviewing the original stakeholder.
+- **Self-check**: does the reality map contain a real clean case, ugly case, disputed case, and observed shadow workflow?
+- **Recover**: return to G1 Evidence Sufficiency. Replay recent failures and handoff breakdowns with source artifacts.
+- **Verify**: another operator can reconstruct current work and exceptions without interviewing the original stakeholder.
 
 ## Pattern 4: Pilot Bloat
 
 Symptoms:
 
-- the first pilot requires multi-system integration, broad model scope, and organization-wide adoption
+- the first pilot needs broad integration, model scope, and organization-wide adoption
 - edge cases dominate before the core loop is proven
 
 Correction:
 
-- **Self-check**: does your pilot require three or more external system integrations, or broad org adoption, before it can show any value?
-- **Recover**: return to Stage 5. Cut scope until one loop — trigger, AI judgment, single output, human confirmation — can be tested end-to-end. Defer integrations and edge cases to after the core loop is proven.
-- **Verify**: the pilot can demonstrate value with a single interface and a bounded input set. Edge cases are logged as future scope, not current blockers.
+- **Self-check**: does the pilot require multiple external systems or broad adoption before it can show any value?
+- **Recover**: return to Stage 5. Cut scope to one trigger, one AI judgment, one action or route, one human confirmation, and one output.
+- **Verify**: the pilot can show value through a bounded input set and one operator interface.
 
 ## Pattern 5: Autonomy Before Trust
 
 Symptoms:
 
-- the design gives AI write authority before clear fallback rules
-- humans cannot see why a decision happened
+- AI receives write authority before fallback and rollback are defined
+- operators cannot inspect why an action occurred
 
 Correction:
 
-- **Self-check**: if the model is wrong today, can a human see why, stop it, and reverse the action? Is the audit trail defined before or after write access?
-- **Recover**: return to Stage 5 and the Governance And Risk Overlay. Downgrade write-capable surfaces to advisory or gated. Add auditability and a fallback path before restoring any write authority.
-- **Verify**: every AI-influenced action has a defined human confirmation point, an audit record, and a rollback condition that still works on a bad model day.
+- **Self-check**: can a human see, stop, and reverse every AI-influenced action today?
+- **Recover**: return to the Governance And Risk Overlay. Reduce authority to advisory or gated, add auditability, containment, fallback, and rollback.
+- **Verify**: every AI-influenced action has a human confirmation point, trace, responsible owner, and reversible path.
 
 ## Pattern 6: No Day-2 Owner
 
 Symptoms:
 
-- no one owns exceptions, model drift, or operational metrics after launch
-- degradation is discovered through user complaints
+- no one owns exceptions, drift, support, or operational metrics after launch
+- degradation reaches users before the team detects it
 
 Correction:
 
-- **Self-check**: is there a named person (not a team) who owns exception handling, drift monitoring, and review cadence after the pilot launches?
-- **Recover**: return to Stage 6. Name the operating owner and exception owner in the Day-2 Operations Plan before finalizing delivery architecture. If no owner can be named, the loop is not delivery-ready.
-- **Verify**: the loop could run for 30 days without the original builder being present in every exception.
+- **Self-check**: is one named person accountable for exception handling, monitoring, review cadence, and support?
+- **Recover**: return to Stage 6. Complete the Day-2 Operations Plan and Production Readiness Review.
+- **Verify**: the loop can operate for 30 days without the original builder handling every exception.
 
 ## Pattern 7: Premature Scale
 
 Symptoms:
 
-- leadership wants rollout before the pilot proves repeatability
-- expansion criteria are vague or political
+- leadership requests rollout before repeatability is proven
+- expansion criteria remain political or vague
 
 Correction:
 
-- **Self-check**: are the expansion criteria based on observed repeatability and measured outcomes, or on leadership enthusiasm and account ambition?
-- **Recover**: return to Stage 7. Define replication conditions and explicit stop/go gates. If the pilot success criteria do not map to expansion criteria, close that gap before any rollout commitment.
-- **Verify**: the team can explain what must be proven before broader rollout and why the next expansion step is the right one — in evidence, not narrative.
+- **Self-check**: do expansion criteria come from observed repeatability, operating burden, and measured impact?
+- **Recover**: return to G4. Define replication conditions, dependencies, stage gates, and reasons to hold.
+- **Verify**: the team can explain the next expansion step through evidence and a go / hold decision.
 
 ## Pattern 8: No Asset Return
 
 Symptoms:
 
-- delivery artifacts solve the current account but leave nothing reusable
+- delivery artifacts solve one account and leave no reusable capability
 - lessons stay inside recap decks, chat logs, or one operator's memory
 - the next similar project starts from zero
 
 Correction:
 
-- **Self-check**: at project close, can another operator reuse any artifact from this case without the original operator explaining it live?
-- **Recover**: run the Post-Delivery Asset Distillation overlay. For each candidate, name the reuse target, source evidence, owner, and destination. Reject candidates that cannot stand alone without project context.
-- **Verify**: at least one promoted asset is defined with owner, proof, and a concrete next reuse context.
+- **Self-check**: can another operator reuse an artifact from the case without a live explanation from the original operator?
+- **Recover**: run the Asset Distillation overlay. Give each candidate source evidence, reuse target, destination, promotion status, and owner.
+- **Verify**: at least one asset is promoted with proof and a concrete first reuse opportunity.
 
 ## Pattern 9: Eval Theater
 
 Symptoms:
 
-- success criteria exist but no representative test cases exist
+- success criteria exist without representative cases
 - demo cases are cherry-picked
-- failure cases are not collected
+- failure, ambiguous, and demo-killing cases are absent
 
 Correction:
 
-- **Self-check**: do you have golden, failure, edge, ambiguous, and demo-killing cases — or only cases that make the system look good?
-- **Recover**: return to Stage 5. Build or complete the Eval Pack with failure and ambiguous cases before the demo. If failure cases cannot be collected, the acceptance threshold is not yet credible.
-- **Verify**: a reviewer can run or inspect the eval pack and decide whether the pilot is acceptable without renegotiating the goal.
+- **Self-check**: can the team point to versioned tasks, expected outcomes, graders, traces, and regression results?
+- **Recover**: return to G2. Build the Eval Pack from real cases and failure classes before the demo or launch review.
+- **Verify**: an external reviewer can rerun or inspect the eval and make the same acceptance decision.
 
 ## Pattern 10: Governance Fog
 
 Symptoms:
 
 - AI authority is vague
-- human-in-the-loop is claimed but not located
-- no audit or rollback path exists
+- human-in-the-loop is claimed without a concrete transfer point
+- audit, containment, and rollback are undefined
 
 Correction:
 
-- **Self-check**: for every AI-influenced action, can you point to where authority transfers to the human, where the audit record is written, and how the action is reversed?
-- **Recover**: complete the Governance And Risk Overlay before any write-capable or operationally influential action. Locate every human confirmation point concretely; do not leave it as "a human is somewhere in the loop."
-- **Verify**: the delivery team can explain who is responsible for every AI-influenced action and how that action can be reviewed, stopped, or reversed.
+- **Self-check**: for each action, where does authority transfer, where is the audit record, how is blast radius capped, and how is the action reversed?
+- **Recover**: complete the Governance And Risk Overlay before any operationally influential action expands.
+- **Verify**: responsibility, evidence, containment, escalation, and rollback are explainable for every action surface.
 
 ## Pattern 11: Day-2 Collapse
 
 Symptoms:
 
-- pilot works only while the builder is present
+- the pilot works only while the builder is present
 - exceptions have no owner
-- degradation is discovered through user complaints
+- manual workarounds grow silently
 
 Correction:
 
-- **Self-check**: if the original builder left tomorrow, would exceptions, drift signals, and review cadence still be handled by someone?
-- **Recover**: complete the Day-2 Operations Plan. Define monitoring signals, manual fallback mode, support path, and operator adoption signal with named owners. If any of these is missing, the pilot is a demo, not a delivery.
-- **Verify**: the loop can run for 30 days without the original builder present in every exception, and degradation is detected by monitoring before it reaches users.
+- **Self-check**: would support, drift review, exception handling, and change approval continue if the builder left tomorrow?
+- **Recover**: complete the Day-2 Operations Plan. Add monitoring, fallback, support, adoption, maintenance burden, and feedback capture.
+- **Verify**: degradation is detected by the operating system before it becomes a user complaint, and workarounds enter the Field Signal Log.
+
+## Pattern 12: Production Readiness Theater
+
+Symptoms:
+
+- a successful demo is treated as launch approval
+- ownership, incident triggers, containment, support, or rollback remain implicit
+- the launch cohort and workflow objectives are undefined
+
+Correction:
+
+- **Self-check**: can an independent reviewer make a go, conditional-go, or no-go decision from documented evidence?
+- **Recover**: run `deployment-readiness` and complete the Production Readiness Review across workflow, evaluation, reliability, governance, adoption, and support.
+- **Verify**: every readiness area has a posture, evidence, blocker, owner, and next proof; the launch decision is explicit.
+
+## Pattern 13: Adoption Blindness
+
+Symptoms:
+
+- the team measures model quality and ignores whether operators use the loop
+- usage is counted without eligible-work denominator or workflow impact
+- shadow workflows remain active after launch
+
+Correction:
+
+- **Self-check**: what share of eligible work enters the loop, returns to manual handling, or stays in shadow tools?
+- **Recover**: define the target operator cohort, adoption signal, workflow objective, training plan, and feedback method in the Minimum Viable Loop, Day-2 Operations Plan, and Production Readiness Review.
+- **Verify**: adoption, repeat use, eligible-work share, workflow impact, and workaround volume are reviewed alongside quality metrics.
+
+## Pattern 14: Field Signal Dump
+
+Symptoms:
+
+- every customer request becomes a product request
+- product, integration, data, policy, change-management, and delivery constraints are mixed together
+- feedback has no evidence, recurrence rule, destination, or owner
+
+Correction:
+
+- **Self-check**: can each field observation be traced to source evidence, classified, and routed to a specific decision owner?
+- **Recover**: create a Field Signal Log entry. Record impact, frequency, constraint class, workaround, reusable pattern hypothesis, destination, promotion status, owner, and next proof.
+- **Verify**: promoted signals meet evidence and materiality thresholds; rejected signals remain closed with a reason; roadmap items can trace back to field evidence.

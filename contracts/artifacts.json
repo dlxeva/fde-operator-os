@@ -1,0 +1,711 @@
+{
+  "contract_version": "1.0.0",
+  "description": "Machine-readable contract for FDE Operator OS artifacts, gates, examples, aliases, and cross-artifact sources of truth.",
+  "artifacts": {
+    "mission-brief": {
+      "title": "Mission Brief",
+      "stage": "1",
+      "template": "assets/templates/mission-brief.md",
+      "required_fields": [
+        "Opportunity name",
+        "Operator mission",
+        "Operational pain with consequence",
+        "Target outcome",
+        "Accountable owner",
+        "Observable success metric",
+        "Key constraints",
+        "Go / no-go posture"
+      ],
+      "template_markers": [
+        "**Opportunity**:",
+        "**Accountable owner**:",
+        "**Success metric(s)**:",
+        "**Go / no-go view**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/01-mission-brief.md",
+          "markers": [
+            "**Opportunity**:",
+            "**Operator mission**:",
+            "**Accountable owner**:",
+            "**Success metric(s)**:",
+            "**Go / no-go view**:"
+          ]
+        }
+      ]
+    },
+    "operational-reality-map": {
+      "title": "Operational Reality Map",
+      "stage": "2",
+      "template": "assets/templates/operational-reality-map.md",
+      "required_fields": [
+        "Core actors",
+        "Responsibility chain",
+        "Current-state workflow",
+        "Systems and channels in use",
+        "Evidence artifacts",
+        "Clean case replay",
+        "Ugly case replay",
+        "Exception paths",
+        "Known failure points"
+      ],
+      "template_markers": [
+        "## Actors",
+        "## Responsibility Chain",
+        "## Clean Case Replay",
+        "## Ugly Case Replay",
+        "## Exception Paths",
+        "## Failure Points"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/02-operational-reality-map.md",
+          "markers": [
+            "## Actors",
+            "## Responsibility Chain",
+            "## Clean Case Replay",
+            "## Ugly Case Replay",
+            "## Exception Paths",
+            "## Failure Points"
+          ]
+        }
+      ]
+    },
+    "system-problem-frame": {
+      "title": "System Problem Frame",
+      "stage": "3",
+      "template": "assets/templates/system-problem-frame.md",
+      "required_fields": [
+        "Problem class",
+        "System boundary",
+        "Primary bottleneck",
+        "North-star outcome",
+        "Non-goals",
+        "Critical assumptions"
+      ],
+      "template_markers": [
+        "**Problem class**:",
+        "**System boundary**:",
+        "**Primary bottleneck**:",
+        "**North-star outcome**:",
+        "**Non-goals**:",
+        "**Critical assumptions**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/03-system-problem-frame.md",
+          "markers": [
+            "**Problem class**:",
+            "**System boundary**:",
+            "**Primary bottleneck**:",
+            "**North-star outcome**:",
+            "**Non-goals**:",
+            "**Critical assumptions**:"
+          ]
+        }
+      ]
+    },
+    "state-action-evidence-model": {
+      "title": "State, Action & Evidence Model",
+      "stage": "4",
+      "template": "assets/templates/state-action-evidence-model.md",
+      "required_fields": [
+        "Objects",
+        "Relationships",
+        "States",
+        "Actions",
+        "Rules",
+        "Events / triggers",
+        "Permissions / authorities",
+        "Evidence for state change"
+      ],
+      "template_markers": [
+        "## Business Objects",
+        "## Relationships",
+        "## States",
+        "## Actions",
+        "## Rules",
+        "## Events / Triggers",
+        "## Permissions",
+        "## Evidence For State Change"
+      ],
+      "strict_examples": []
+    },
+    "ai-intervention-design": {
+      "title": "AI Intervention Design",
+      "stage": "5",
+      "template": "assets/templates/ai-intervention-design.md",
+      "required_fields": [
+        "Target bottleneck",
+        "AI role",
+        "Human role",
+        "Automation boundary",
+        "Fallback path",
+        "Failure modes"
+      ],
+      "template_markers": [
+        "**Target bottleneck**:",
+        "**AI role**:",
+        "**Human role**:",
+        "**Automation boundary**:",
+        "**Fallback path**:",
+        "**Failure modes**:"
+      ],
+      "strict_examples": []
+    },
+    "minimum-viable-loop": {
+      "title": "Minimum Viable Loop",
+      "stage": "5",
+      "template": "assets/templates/minimum-viable-loop.md",
+      "required_fields": [
+        "Trigger input",
+        "Baseline manual path",
+        "AI judgment or transformation",
+        "Action or routing step",
+        "Human confirmation step",
+        "Output / write-back",
+        "Feedback / verification",
+        "Archive / audit",
+        "Required integrations",
+        "Operating owner",
+        "Operator adoption signal",
+        "Day-2 maintenance burden",
+        "Drift / degradation signal",
+        "Rollback condition",
+        "Manual fallback mode"
+      ],
+      "template_markers": [
+        "**Trigger input**:",
+        "**Baseline manual path**:",
+        "**AI judgment / transformation**:",
+        "**Action / routing**:",
+        "**Human confirmation**:",
+        "**Output / write-back**:",
+        "**Feedback / verification**:",
+        "**Archive / audit**:",
+        "**Required integrations**:",
+        "**Operating owner**:",
+        "**Operator adoption signal**:",
+        "**Day-2 maintenance burden**:",
+        "**Drift / degradation signal**:",
+        "**Rollback condition**:",
+        "**Fallback mode**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/04-minimum-viable-loop.md",
+          "markers": [
+            "**Trigger input**:",
+            "**Baseline manual path**:",
+            "**AI judgment / transformation**:",
+            "**Operating owner**:",
+            "**Operator adoption signal**:",
+            "**Day-2 maintenance burden**:",
+            "**Drift / degradation signal**:",
+            "**Rollback condition**:"
+          ]
+        }
+      ]
+    },
+    "poc-acceptance-contract": {
+      "title": "POC Acceptance Contract",
+      "stage": "5",
+      "template": "assets/templates/poc-acceptance-contract.md",
+      "required_fields": [
+        "POC objective",
+        "Baseline",
+        "Success criteria",
+        "Failure criteria",
+        "Measurement window",
+        "Demo path",
+        "Eval pack link",
+        "Required evidence",
+        "Review cadence",
+        "Rollback condition",
+        "Required reviewer",
+        "Decision gate",
+        "Known exclusions",
+        "Decision after review"
+      ],
+      "template_markers": [
+        "**POC objective**:",
+        "**Baseline**:",
+        "**Success criteria**:",
+        "**Failure criteria**:",
+        "**Measurement window**:",
+        "**Eval pack link**:",
+        "**Review cadence**:",
+        "**Rollback condition**:",
+        "**Required reviewer**:",
+        "**Decision gate**:",
+        "**Decision after review**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/05-poc-acceptance-contract.md",
+          "markers": [
+            "**POC objective**:",
+            "**Baseline**:",
+            "**Success criteria**:",
+            "**Failure criteria**:",
+            "**Measurement window**:",
+            "**Eval pack link**:",
+            "**Review cadence**:",
+            "**Rollback condition**:",
+            "**Required reviewer**:",
+            "**Decision gate**:",
+            "**Decision after review**:"
+          ]
+        }
+      ]
+    },
+    "case-replay-pack": {
+      "title": "Case Replay Pack",
+      "stage": "2",
+      "template": "assets/templates/case-replay-pack.md",
+      "required_fields": [
+        "Clean case",
+        "Ugly case",
+        "Disputed case",
+        "Handoff failure",
+        "Shadow workflow observed",
+        "Source artifacts",
+        "Operator involved",
+        "Decision point",
+        "Action taken",
+        "Evidence available at the time",
+        "Outcome",
+        "What this case proves",
+        "What this case does not prove"
+      ],
+      "template_markers": [
+        "## Clean Case",
+        "## Ugly Case",
+        "## Disputed Case",
+        "## Handoff Failure",
+        "## Shadow Workflow Observed",
+        "## Source Artifacts"
+      ],
+      "strict_examples": []
+    },
+    "reality-capture-gate": {
+      "title": "Reality Capture Gate",
+      "stage": "2-5",
+      "template": "assets/templates/reality-capture-gating.md",
+      "required_fields": [
+        "Real cases collected (clean / ugly / disputed / handoff-failure)",
+        "Named owners assigned (operating owner / exception owner / review owner)",
+        "Baseline metrics measured (not estimated)",
+        "Knowledge base readiness (whitelists / price tables / templates / rules structured and loaded)",
+        "Boundary calibration (what counts as in-scope vs exception, evidenced by samples)",
+        "Reviewer load confirmed (can the named reviewer actually absorb the pilot volume)",
+        "Open gating items with owner and due state"
+      ],
+      "template_markers": [
+        "## Real Cases Collected",
+        "## Named Owners",
+        "## Baseline Metrics Measured",
+        "## Knowledge Base Readiness",
+        "## Boundary Calibration",
+        "## Reviewer Load",
+        "## Sufficiency Posture",
+        "## Open Gating Items"
+      ],
+      "strict_examples": []
+    },
+    "eval-pack": {
+      "title": "Eval Pack",
+      "stage": "5-6",
+      "template": "assets/templates/eval-pack.md",
+      "required_fields": [
+        "Evaluation objective",
+        "Golden cases",
+        "Failure cases",
+        "Edge cases",
+        "Ambiguous cases",
+        "Human review rubric",
+        "Baseline comparison",
+        "Acceptance threshold",
+        "Regression check",
+        "Demo-killing cases",
+        "Evidence required",
+        "Review owner"
+      ],
+      "template_markers": [
+        "**Evaluation objective**:",
+        "**Golden cases**:",
+        "**Failure cases**:",
+        "**Edge cases**:",
+        "**Ambiguous cases**:",
+        "**Human review rubric**:",
+        "**Baseline comparison**:",
+        "**Acceptance threshold**:",
+        "**Regression check**:",
+        "**Demo-killing cases**:",
+        "**Evidence required**:",
+        "**Review owner**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/07-eval-cases.md",
+          "markers": [
+            "**Evaluation objective**:",
+            "**Golden cases**:",
+            "**Failure cases**:",
+            "**Edge cases**:",
+            "**Ambiguous cases**:",
+            "**Human review rubric**:",
+            "**Baseline comparison**:",
+            "**Acceptance threshold**:",
+            "**Regression check**:",
+            "**Demo-killing cases**:",
+            "**Evidence required**:",
+            "**Review owner**:"
+          ]
+        }
+      ]
+    },
+    "governance-and-risk-overlay": {
+      "title": "Governance And Risk Overlay",
+      "stage": "5-6",
+      "template": "assets/templates/governance-and-risk-overlay.md",
+      "required_fields": [
+        "AI authority level",
+        "Read-only surfaces",
+        "Advisory surfaces",
+        "Gated action surfaces",
+        "Write-capable surfaces",
+        "Human confirmation points",
+        "Audit trail",
+        "Escalation path",
+        "Rollback condition",
+        "Policy or compliance constraints",
+        "Data sensitivity",
+        "Risk owner",
+        "Known unacceptable failure modes"
+      ],
+      "template_markers": [
+        "**AI authority level**:",
+        "**Read-only surfaces**:",
+        "**Advisory surfaces**:",
+        "**Gated action surfaces**:",
+        "**Write-capable surfaces**:",
+        "**Human confirmation points**:",
+        "**Audit trail**:",
+        "**Escalation path**:",
+        "**Rollback condition**:",
+        "**Policy or compliance constraints**:",
+        "**Data sensitivity**:",
+        "**Risk owner**:",
+        "**Known unacceptable failure modes**:"
+      ],
+      "strict_examples": []
+    },
+    "day-2-operations-plan": {
+      "title": "Day-2 Operations Plan",
+      "stage": "6",
+      "template": "assets/templates/day-2-operations-plan.md",
+      "required_fields": [
+        "Operating owner",
+        "Exception owner",
+        "Support path",
+        "Monitoring signals",
+        "Drift or degradation signal",
+        "Manual fallback mode",
+        "Review cadence",
+        "Issue triage rule",
+        "Change approval rule",
+        "Maintenance burden",
+        "Operator adoption signal",
+        "Feedback capture method",
+        "Asset promotion candidate"
+      ],
+      "template_markers": [
+        "**Operating owner**:",
+        "**Exception owner**:",
+        "**Support path**:",
+        "**Monitoring signals**:",
+        "**Drift or degradation signal**:",
+        "**Manual fallback mode**:",
+        "**Review cadence**:",
+        "**Issue triage rule**:",
+        "**Change approval rule**:",
+        "**Maintenance burden**:",
+        "**Operator adoption signal**:",
+        "**Feedback capture method**:",
+        "**Asset promotion candidate**:"
+      ],
+      "strict_examples": []
+    },
+    "production-readiness-review": {
+      "title": "Production Readiness Review",
+      "stage": "6",
+      "template": "assets/templates/production-readiness-review.md",
+      "required_fields": [
+        "Launch scope",
+        "Production owner",
+        "Target operator cohort and adoption plan",
+        "Service and workflow objectives",
+        "Eval baseline and regression gate",
+        "Observability and audit coverage",
+        "Incident trigger and severity model",
+        "Support and escalation path",
+        "Security, privacy, and compliance posture",
+        "Data and source-of-truth readiness",
+        "Containment boundary",
+        "Fallback and rollback path",
+        "Capacity and cost guardrail",
+        "Training and runbook readiness",
+        "Launch decision and blockers"
+      ],
+      "template_markers": [
+        "**Launch scope**:",
+        "**Production owner**:",
+        "**Target operator cohort and adoption plan**:",
+        "**Service and workflow objectives**:",
+        "**Eval baseline and regression gate**:",
+        "**Observability and audit coverage**:",
+        "**Incident trigger and severity model**:",
+        "**Support and escalation path**:",
+        "**Security, privacy, and compliance posture**:",
+        "**Data and source-of-truth readiness**:",
+        "**Containment boundary**:",
+        "**Fallback and rollback path**:",
+        "**Capacity and cost guardrail**:",
+        "**Training and runbook readiness**:",
+        "**Launch decision and blockers**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/10-production-readiness-review.md",
+          "markers": [
+            "**Launch scope**:",
+            "**Production owner**:",
+            "**Target operator cohort and adoption plan**:",
+            "**Service and workflow objectives**:",
+            "**Eval baseline and regression gate**:",
+            "**Observability and audit coverage**:",
+            "**Incident trigger and severity model**:",
+            "**Containment boundary**:",
+            "**Fallback and rollback path**:",
+            "**Launch decision and blockers**:"
+          ]
+        }
+      ]
+    },
+    "field-signal-log": {
+      "title": "Field Signal Log",
+      "stage": "2-7 and post-delivery",
+      "template": "assets/templates/field-signal-log.md",
+      "required_fields": [
+        "Signal ID and date",
+        "Source and workflow context",
+        "Operator or stakeholder",
+        "Observation and source evidence",
+        "Impact, severity, and frequency",
+        "Constraint class",
+        "Current workaround",
+        "Reusable pattern hypothesis",
+        "Product, skill, or delivery implication",
+        "Destination and promotion status",
+        "Owner and next proof"
+      ],
+      "template_markers": [
+        "**Signal ID and date**:",
+        "**Source and workflow context**:",
+        "**Operator or stakeholder**:",
+        "**Observation and source evidence**:",
+        "**Impact, severity, and frequency**:",
+        "**Constraint class**:",
+        "**Current workaround**:",
+        "**Reusable pattern hypothesis**:",
+        "**Product, skill, or delivery implication**:",
+        "**Destination and promotion status**:",
+        "**Owner and next proof**:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/11-field-signal-log.md",
+          "markers": [
+            "**Signal ID and date**:",
+            "**Source and workflow context**:",
+            "**Observation and source evidence**:",
+            "**Constraint class**:",
+            "**Reusable pattern hypothesis**:",
+            "**Destination and promotion status**:",
+            "**Owner and next proof**:"
+          ]
+        }
+      ]
+    },
+    "expansion-roadmap": {
+      "title": "Expansion Roadmap",
+      "stage": "7",
+      "template": "assets/templates/expansion-roadmap.md",
+      "required_fields": [
+        "Current proven loop",
+        "Replication conditions",
+        "Next adjacent loops",
+        "Capability dependencies",
+        "Organizational dependencies",
+        "Risk ledger",
+        "Stage gates"
+      ],
+      "template_markers": [
+        "**Current proven loop**:",
+        "**Replication conditions**:",
+        "**Next adjacent loops**:",
+        "**Capability dependencies**:",
+        "**Organizational dependencies**:",
+        "**Risk ledger**:",
+        "**Stage gates**:"
+      ],
+      "strict_examples": []
+    },
+    "asset-distillation-log": {
+      "title": "Asset Distillation Log",
+      "stage": "post-delivery",
+      "template": "assets/templates/asset-distillation-log.md",
+      "required_fields": [
+        "Source case",
+        "Asset candidate",
+        "Asset type",
+        "Reuse target",
+        "Source evidence",
+        "Promotion decision",
+        "Owner",
+        "Next maintenance action"
+      ],
+      "template_markers": [
+        "## Source Case",
+        "## Asset Candidates",
+        "- Asset:",
+        "- Type:",
+        "- Reuse target:",
+        "- Source evidence:",
+        "- Promotion decision:",
+        "- Owner:",
+        "- Next maintenance action:"
+      ],
+      "strict_examples": [
+        {
+          "path": "examples/synthetic-exception-closure-ai/09-asset-distillation-log.md",
+          "markers": [
+            "## Source Case",
+            "## Asset Candidates",
+            "- Asset:",
+            "- Type:",
+            "- Reuse target:",
+            "- Source evidence:",
+            "- Promotion decision:",
+            "- Owner:",
+            "- Next maintenance action:"
+          ]
+        }
+      ]
+    }
+  },
+  "aliases": [
+    {
+      "path": "assets/templates/ontology-action-model.md",
+      "canonical": "assets/templates/state-action-evidence-model.md"
+    }
+  ],
+  "source_of_truth": {
+    "operating_owner": {
+      "artifact": "day-2-operations-plan",
+      "field": "Operating owner"
+    },
+    "exception_owner": {
+      "artifact": "day-2-operations-plan",
+      "field": "Exception owner"
+    },
+    "rollback_condition": {
+      "artifact": "poc-acceptance-contract",
+      "field": "Rollback condition"
+    },
+    "fallback_mode": {
+      "artifact": "minimum-viable-loop",
+      "field": "Manual fallback mode"
+    },
+    "drift_signal": {
+      "artifact": "day-2-operations-plan",
+      "field": "Drift or degradation signal"
+    },
+    "success_criteria": {
+      "artifact": "poc-acceptance-contract",
+      "field": "Success criteria"
+    },
+    "failure_criteria": {
+      "artifact": "poc-acceptance-contract",
+      "field": "Failure criteria"
+    },
+    "operator_adoption_signal": {
+      "artifact": "day-2-operations-plan",
+      "field": "Operator adoption signal"
+    },
+    "ai_authority_level": {
+      "artifact": "governance-and-risk-overlay",
+      "field": "AI authority level"
+    },
+    "production_launch_decision": {
+      "artifact": "production-readiness-review",
+      "field": "Launch decision and blockers"
+    },
+    "field_constraint_and_destination": {
+      "artifact": "field-signal-log",
+      "field": "Destination and promotion status"
+    }
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "Mission Fit",
+      "after_stage": "1",
+      "required_artifacts": ["mission-brief"]
+    },
+    {
+      "id": "G1",
+      "name": "Evidence Sufficiency",
+      "after_stage": "2",
+      "required_artifacts": [
+        "operational-reality-map",
+        "case-replay-pack",
+        "reality-capture-gate"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "Pilot Contract",
+      "after_stage": "5",
+      "required_artifacts": [
+        "minimum-viable-loop",
+        "poc-acceptance-contract",
+        "eval-pack",
+        "governance-and-risk-overlay"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "Production Readiness",
+      "after_stage": "6",
+      "required_artifacts": [
+        "day-2-operations-plan",
+        "production-readiness-review",
+        "field-signal-log"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "Replication And Asset Promotion",
+      "after_stage": "7 or post-delivery",
+      "required_artifacts": [
+        "expansion-roadmap",
+        "asset-distillation-log",
+        "field-signal-log"
+      ]
+    }
+  ],
+  "case_manifest_schema": "contracts/case-manifest.schema.json"
+}

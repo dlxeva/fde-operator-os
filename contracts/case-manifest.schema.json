@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dlxeva/fde-operator-os/contracts/case-manifest.schema.json",
+  "title": "FDE Operator OS Case Manifest",
+  "type": "object",
+  "required": ["$schema", "case_id", "synthetic", "artifacts", "gates"],
+  "properties": {
+    "$schema": {"type": "string", "minLength": 1},
+    "case_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "artifacts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "gates": {
+      "type": "object",
+      "required": ["G0", "G1", "G2", "G3", "G4"],
+      "properties": {
+        "G0": {"$ref": "#/$defs/gateStatus"},
+        "G1": {"$ref": "#/$defs/gateStatus"},
+        "G2": {"$ref": "#/$defs/gateStatus"},
+        "G3": {"$ref": "#/$defs/gateStatus"},
+        "G4": {"$ref": "#/$defs/gateStatus"}
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "gateStatus": {
+      "type": "string",
+      "enum": ["go", "conditional-go", "no-go", "hold", "not-run"]
+    }
+  },
+  "additionalProperties": false
+}

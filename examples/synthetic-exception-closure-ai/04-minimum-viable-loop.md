@@ -1,16 +1,25 @@
 # Minimum Viable Loop
 
-- **Trigger input**: Frontline submitter sends a screenshot and short note for one target exception category
-- **AI judgment / transformation**: AI classifies the submission into likely valid exception, likely not an exception, or uncertain; it also drafts a rationale for coordinator review
-- **Action / routing**: The submission is routed to the coordinator with a suggested disposition and a prefilled resolution task draft
-- **Human confirmation**: Coordinator approves, edits, or rejects the suggested disposition before any task is created
-- **Output / write-back**: Approved items create a task in the existing system with attached evidence and standardized exception metadata
-- **Feedback / verification**: Response owner uploads closure evidence; coordinator reviews evidence against a minimal standard
-- **Archive / audit**: Submission, decision rationale, approval, task ID, closure evidence, and timestamps are retained for reporting
+- **Trigger input**: Frontline submitter sends a screenshot, location, category, and short note for one target exception category.
+- **Baseline manual path**: Coordinator checks the triage guide, asks for clarification in chat when needed, decides disposition, manually creates the task, and later reconciles overdue items in a spreadsheet. Median review-to-task time is assumed at 12 minutes pending measured baseline confirmation.
+- **AI judgment / transformation**: AI classifies the submission as likely valid, likely out of scope, or uncertain; extracts required metadata; and drafts a rationale for coordinator review.
+- **Action / routing**: The submission enters a coordinator queue with suggested disposition, missing-evidence flags, and a prefilled resolution-task draft.
+- **Human confirmation**: Coordinator approves, edits, or rejects the disposition before any task is created. Uncertain or policy-sensitive cases stay human-led.
+- **Output / write-back**: Approved items create a task in the existing system with source evidence, standardized metadata, decision rationale, approver, and timestamp.
+- **Feedback / verification**: Response owner uploads closure evidence; coordinator reviews it against the minimum standard; accepted and rejected decisions feed the eval and field-signal logs.
+- **Archive / audit**: Submission, model result, rationale, edits, approval, task ID, closure evidence, state changes, and timestamps are retained.
 - **Required integrations**:
   - web submission export
   - tasking system
-  - evidence storage for attachments
-- **Operator interface**: Existing coordinator review screen or a lightweight review queue layered on top
-- **Operating owner**: Regional operations coordinator
-- **Fallback mode**: If AI confidence is low or the draft is obviously wrong, coordinator handles the case manually without task auto-drafting
+  - evidence attachment storage
+  - operator identity for approval and audit
+- **Operator interface**: Existing coordinator review screen or a lightweight review queue layered on top.
+- **Operating owner**: Regional operations coordinator; consolidated into the Day-2 Operations Plan before launch.
+- **Operator adoption signal**: At least 80% of eligible pilot submissions are reviewed through the queue by the target coordinators by the end of week two; manual chat-first handling is tracked separately.
+- **Day-2 maintenance burden**: Weekly review of uncertain cases and failure classes, monthly triage-guide update, and no more than two hours per week of manual reconciliation during the pilot.
+- **Drift / degradation signal**: Rising coordinator override rate, increased uncertain classification, growing missing-evidence rate, or return to chat-first handling for eligible cases.
+- **Rollback condition**: Pause AI drafting when a critical demo-killing case occurs, audit fields are missing, or the weekly critical-error threshold defined in the POC Acceptance Contract is exceeded.
+- **Fallback mode**: Coordinators use the current manual review and task-creation path while preserving the same intake, approval, and evidence fields.
+- **Latency target**: Draft and routing result available within two minutes for 95% of pilot submissions.
+- **Volume assumption**: 100-200 eligible submissions during a four-week pilot.
+- **Cost guardrail**: Inference and support cost stays below the value of coordinator time saved and remains visible in weekly review.
