@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deployment Readiness"
+  short_description: "Decide whether an AI loop is ready for production and rescue live operating failures"
+  default_prompt: "Use deployment-readiness to review launch blockers, production ownership, adoption, eval regression, observability, incidents, containment, rollback, and field-learning paths for this bounded AI loop."
