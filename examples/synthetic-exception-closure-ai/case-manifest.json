@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/case-manifest.schema.json",
+  "case_id": "synthetic-exception-closure-ai",
+  "title": "Synthetic Exception Closure AI",
+  "synthetic": true,
+  "artifacts": {
+    "mission-brief": "01-mission-brief.md",
+    "operational-reality-map": "02-operational-reality-map.md",
+    "system-problem-frame": "03-system-problem-frame.md",
+    "minimum-viable-loop": "04-minimum-viable-loop.md",
+    "poc-acceptance-contract": "05-poc-acceptance-contract.md",
+    "eval-pack": "07-eval-cases.md",
+    "production-readiness-review": "10-production-readiness-review.md",
+    "field-signal-log": "11-field-signal-log.md",
+    "asset-distillation-log": "09-asset-distillation-log.md"
+  },
+  "gates": {
+    "G0": "pass",
+    "G1": "conditional",
+    "G2": "conditional",
+    "G3": "conditional",
+    "G4": "hold"
+  },
+  "notes": [
+    "This is a synthetic case used for teaching and repository regression validation.",
+    "G1, G2, and G3 remain conditional because real operational and production evidence are intentionally unavailable in a synthetic case."
+  ]
+}
