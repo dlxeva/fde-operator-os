@@ -78,11 +78,13 @@ Use $fde-operator-os。
 
 ## 工件契约与自动验证
 
-仓库现在把工件质量写成可执行契约：
+仓库把阶段和工件质量写成可执行契约：
 
-- [`contracts/artifacts.json`](./contracts/artifacts.json)：定义工件、必填字段、阶段、Gate、兼容别名、严格示例和跨工件事实源
-- [`contracts/case-manifest.schema.json`](./contracts/case-manifest.schema.json)：定义案例索引格式
+- [`contracts/stages.json`](./contracts/stages.json)：七阶段编号、ID、显示名称与退出 Gate 的统一注册表
+- [`contracts/artifacts.json`](./contracts/artifacts.json)：工件名称、必填字段、工件阶段引用、Gate、兼容别名、严格示例和跨工件事实源
+- [`contracts/case-manifest.schema.json`](./contracts/case-manifest.schema.json)：案例索引格式
 - [`tools/validate_repo.py`](./tools/validate_repo.py)：检查模板漂移、示例缺字段、失效链接、别名重复、未知 Gate 引用和案例清单
+- [`tests/test_stage_contract.py`](./tests/test_stage_contract.py)：阻止阶段注册表、根 Skill、README、工件引用和 Gate 引用发生漂移
 - [`.github/workflows/validate.yml`](./.github/workflows/validate.yml)：在 push 与 pull request 中运行验证和单元测试
 
 执行完整本地验收：
@@ -172,10 +174,10 @@ fde-operator-os/
 ├── skills/                   # 轻量执行 Skill
 ├── references/               # 方法论、启发式、失败模式
 ├── assets/templates/         # operator 与控制工件
-├── contracts/                # 机器可读契约
+├── contracts/                # 阶段、工件、Gate 与案例契约
 ├── examples/                 # synthetic case 与回归示例
 ├── tools/                    # 仓库验证器
-├── tests/                    # 验证器测试
+├── tests/                    # 验证器与契约测试
 ├── .github/workflows/        # CI
 ├── aliases/                  # runtime wrapper
 └── agents/                   # 宿主元数据
@@ -194,7 +196,7 @@ fde-operator-os/
 
 ## 当前状态
 
-核心 doctrine 已经稳定。仓库会继续吸收 Applied AI 与 FDE 实践，自动验证用于保证模板、Skill、示例和文档在迭代中保持一致。
+核心 doctrine 已经稳定。仓库会继续吸收 Applied AI 与 FDE 实践，自动验证用于保证契约、模板、Skill、示例和文档在迭代中保持一致。
 
 ## License
 

@@ -239,7 +239,7 @@ Failure signals:
 - actions without authority or owner
 - state changes without evidence or audit
 
-## Stage 5: Intervention And Pilot Design
+## Stage 5: Intervention & Pilot Design
 
 **Goal:** choose the smallest AI surface that can prove or disprove value.
 
@@ -273,7 +273,7 @@ Failure signals:
 - acceptance defined after build
 - pilot completion treated as launch approval
 
-## Stage 6: Delivery Architecture And Production Readiness
+## Stage 6: Delivery Architecture
 
 **Goal:** define how the loop enters and survives real operator work.
 

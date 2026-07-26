@@ -1,0 +1,48 @@
+{
+  "contract_version": "1.0.0",
+  "description": "Canonical stage registry for the seven-stage FDE Operator OS delivery chain.",
+  "stages": [
+    {
+      "number": 1,
+      "id": "mission-qualification",
+      "name": "Mission Qualification",
+      "exit_gate": "G0"
+    },
+    {
+      "number": 2,
+      "id": "operational-reality-capture",
+      "name": "Operational Reality Capture",
+      "exit_gate": "G1"
+    },
+    {
+      "number": 3,
+      "id": "system-framing",
+      "name": "System Framing",
+      "exit_gate": null
+    },
+    {
+      "number": 4,
+      "id": "state-action-evidence-model",
+      "name": "State, Action & Evidence Model",
+      "exit_gate": null
+    },
+    {
+      "number": 5,
+      "id": "intervention-pilot-design",
+      "name": "Intervention & Pilot Design",
+      "exit_gate": "G2"
+    },
+    {
+      "number": 6,
+      "id": "delivery-architecture",
+      "name": "Delivery Architecture",
+      "exit_gate": "G3"
+    },
+    {
+      "number": 7,
+      "id": "expansion-logic",
+      "name": "Expansion Logic",
+      "exit_gate": "G4"
+    }
+  ]
+}
