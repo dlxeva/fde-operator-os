@@ -20,7 +20,27 @@ jobs:
           python-version: "3.12"
 
       - name: Validate artifact contract and links
-        run: python tools/validate_repo.py
+        id: contract
+        shell: bash
+        run: |
+          set +e
+          python tools/validate_repo.py 2>&1 | tee validation-report.txt
+          exit_code=${PIPESTATUS[0]}
+          echo "exit_code=${exit_code}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Retain validation diagnostics
+        if: steps.contract.outputs.exit_code != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-validation-report
+          path: validation-report.txt
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Fail on contract violations
+        if: steps.contract.outputs.exit_code != '0'
+        run: exit 1
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
