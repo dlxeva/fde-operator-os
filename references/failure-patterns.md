@@ -91,7 +91,7 @@ Correction:
 Symptoms:
 
 - leadership requests rollout before repeatability is proven
-- expansion criteria remain political or vague
+- expansion criteria remain leadership-driven or vague
 
 Correction:
 
@@ -193,6 +193,6 @@ Symptoms:
 
 Correction:
 
-- **Self-check**: can each field observation be traced to source evidence, classified, and routed to a specific decision owner?
+- **Self-check**: can each field observation be traced to source evidence, categorized, and routed to a specific decision owner?
 - **Recover**: create a Field Signal Log entry. Record impact, frequency, constraint class, workaround, reusable pattern hypothesis, destination, promotion status, owner, and next proof.
 - **Verify**: promoted signals meet evidence and materiality thresholds; rejected signals remain closed with a reason; roadmap items can trace back to field evidence.

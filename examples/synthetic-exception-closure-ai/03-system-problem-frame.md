@@ -2,7 +2,7 @@
 
 - **Problem class**: Closed-loop operational workflow with perception-assisted qualification
 - **System boundary**: Submission intake, coordinator review, resolution task initiation, closure evidence review, and overdue visibility
-- **Primary bottleneck**: Inconsistent coordinator qualification and weak evidence enforcement between submission and closure
+- **Primary bottleneck**: Inconsistent coordinator qualification and inconsistent evidence requirements between submission and closure
 - **North-star outcome**: A repeatable exception-to-resolution loop with trusted review criteria and auditable closure evidence
 - **Non-goals**:
   - replacing the tasking platform

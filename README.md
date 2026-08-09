@@ -141,7 +141,7 @@ Templates live in [`assets/templates/`](./assets/templates/).
 Additional compact examples:
 
 - [`examples/first-run-minimal-loop/`](./examples/first-run-minimal-loop/)
-- [`examples/synthetic-public-safety-ai/`](./examples/synthetic-public-safety-ai/)
+- [`examples/synthetic-cross-border-commerce-ai/`](./examples/synthetic-cross-border-commerce-ai/) — fictional cross-border commerce composite with no real customer provenance
 - [`examples/case-pack-template/`](./examples/case-pack-template/)
 
 ## Install And Invoke

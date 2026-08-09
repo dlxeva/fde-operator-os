@@ -141,7 +141,7 @@ python -m compileall -q tools tests
 其他紧凑示例：
 
 - [`examples/first-run-minimal-loop/`](./examples/first-run-minimal-loop/)
-- [`examples/synthetic-public-safety-ai/`](./examples/synthetic-public-safety-ai/)
+- [`examples/synthetic-cross-border-commerce-ai/`](./examples/synthetic-cross-border-commerce-ai/)：虚构跨境电商复合案例，不对应真实客户
 - [`examples/case-pack-template/`](./examples/case-pack-template/)
 
 ## 安装与调用

@@ -19,7 +19,7 @@
 
 - If the ask is broad, separate sensing, judgment, routing, execution, verification, and governance.
 - Choose one bottleneck to fix first.
-- Make non-goals explicit early to avoid political scope inflation.
+- Make non-goals explicit early to avoid stakeholder-driven scope inflation.
 - Classify the binding constraint before routing it into product, delivery, policy, data, or change-management work.
 
 ## State, Action & Evidence Model

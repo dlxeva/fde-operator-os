@@ -148,10 +148,13 @@ Reference the canonical field from other artifacts. When the source artifact has
 A shipped case must be:
 
 - synthetic, public, or sanitized
+- explicit about provenance and authorization
 - separated from core doctrine
 - useful for teaching or regression validation
 - indexed through `case-manifest.json`
 - explicit about which gates are go, conditional-go, no-go, held, or unrun
+
+A fictional composite must state that it does not describe a specific company, customer, site, deployment, or observed operational weakness. Do not publish a synthetic case that remains traceable to private customer material.
 
 One case can stress the method. It cannot redefine the cross-industry doctrine by itself.
 

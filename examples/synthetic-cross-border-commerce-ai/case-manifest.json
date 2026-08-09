@@ -1,0 +1,21 @@
+{
+  "$schema": "../../contracts/case-manifest.schema.json",
+  "case_id": "synthetic-cross-border-commerce-ai",
+  "title": "Synthetic Cross-Border Commerce Operator Loop Pack",
+  "synthetic": true,
+  "artifacts": {
+    "minimum-viable-loop": "operator-loop-pack.md"
+  },
+  "gates": {
+    "G0": "not-run",
+    "G1": "not-run",
+    "G2": "not-run",
+    "G3": "not-run",
+    "G4": "not-run"
+  },
+  "notes": [
+    "Fictional composite for methodology demonstration only.",
+    "No real company, customer, marketplace account, shipment, deployment, or observed operational weakness is represented.",
+    "No delivery or production gate has been run."
+  ]
+}

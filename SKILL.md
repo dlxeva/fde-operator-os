@@ -174,7 +174,7 @@ Artifacts:
 - `assets/templates/case-replay-pack.md`
 - `assets/templates/reality-capture-gating.md`
 
-Use `references/operator-heuristics.md` when the workflow is politically filtered or poorly documented.
+Use `references/operator-heuristics.md` when the workflow is stakeholder-filtered or poorly documented.
 
 Exit through G1 when another operator can replay the real loop and the Reality Capture Gate states which evidence is collected, inferred, or blocking.
 

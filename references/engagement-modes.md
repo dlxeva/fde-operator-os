@@ -2,7 +2,7 @@
 
 ## Discovery Sprint
 
-- **When to use**: early qualification, broad opportunity compression, or politically noisy discovery where the team still needs the right loop
+- **When to use**: early qualification, broad opportunity compression, or stakeholder-conflicted discovery where the team still needs the right loop
 - **Starting stage**: Mission Qualification or Operational Reality Capture
 - **Required artifacts**:
   - Mission Brief

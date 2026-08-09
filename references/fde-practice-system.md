@@ -195,7 +195,7 @@ A team can combine roles. It still needs one accountable owner for every decisio
 
 ### Product learning
 
-- field signals classified and resolved
+- field signals categorized and resolved
 - reusable assets promoted
 - recurrence across customers or workflows
 - time from signal to validated product, template, eval, or policy decision

@@ -20,7 +20,7 @@ Use for early qualification when the team must decide whether this is a real AI 
 - Strategic context
 - Executive sponsor
 - Time window
-- Political sensitivity
+- Stakeholder and organizational sensitivity
 - Verification path (what evidence must be collected before go is confirmed — useful when qualification is conditional)
 
 ## Typical Anti-Pattern

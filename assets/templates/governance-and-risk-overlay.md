@@ -53,4 +53,3 @@ The delivery team can explain who is responsible for every AI-influenced action 
 - **Risk owner**:
 - **Known unacceptable failure modes**:
 ```
-
