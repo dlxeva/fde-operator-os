@@ -10,6 +10,8 @@ Turn field ambiguity into a production-worthy AI operating loop, then return fie
 
 </div>
 
+> More field notes on putting AI agents into real work: [aizhiz.com](https://aizhiz.com/) · 更多 AI 落地现场笔记：[人工智障研究所](https://aizhiz.com/zh/)
+
 ## What This Repository Does
 
 `fde-operator-os` is an operator-grade skill and playbook for Forward Deployed Engineers, Applied AI leads, solution architects, and delivery owners.
